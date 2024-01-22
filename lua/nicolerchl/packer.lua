@@ -8,6 +8,13 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
+    'goolord/alpha-nvim',
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.dashboard'.config)
+    end
+  }
+
+  use {
     'embark-theme/vim',
     as = 'embark',
     config = function()
@@ -26,17 +33,6 @@ return require('packer').startup(function(use)
         -- refer to the configuration section below
       }
     end
-  }
-
-  use {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    requires = {'nvim-tree/nvim-web-devicons'}
-  }
-
-  use {
-    "folke/noice.nvim",
-    requires = "MunifTanjim/nui.nvim"
   }
 
   use {
