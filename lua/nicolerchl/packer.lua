@@ -48,6 +48,8 @@ return require('packer').startup(function(use)
   use "lukas-reineke/indent-blankline.nvim"
   use "echasnovski/mini.indentscope"
 
+  use "terrortylor/nvim-comment"
+
   use ('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
 
   use ('github/copilot.vim')
