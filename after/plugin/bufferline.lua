@@ -25,8 +25,20 @@ for i = 1, 9 do
     )
 end
 
+local close_tab = function()
+    local buffer_count = #vim.fn.getbufinfo({buflisted = 1})
+
+    if buffer_count > 1 then
+        vim.cmd("bp | bd #")
+    else
+        vim.cmd("bd")
+        vim.cmd("Alpha")
+        -- close the only buffer
+    end
+end
+
 vim.keymap.set("n", "t", "")
-vim.keymap.set("n", "tw", ":bp <BAR> bd #<CR>", { desc = "Close current tab" })
+vim.keymap.set("n", "tw", close_tab, { desc = "Close current tab" })
 vim.keymap.set("n", "tc<Left>", vim.cmd.BufferLineCloseLeft, { desc = "Close left tabs" })
 vim.keymap.set("n", "tc<Right>", vim.cmd.BufferLineCloseRight, { desc = "Close right tabs" })
 vim.keymap.set("n", "tcw", vim.cmd.BufferLineCloseOther, { desc = "Close other tabs" })

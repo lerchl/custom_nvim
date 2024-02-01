@@ -40,6 +40,8 @@ return require('packer').startup(function(use)
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
 
+  use "f-person/git-blame.nvim"
+
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
     requires = { {'nvim-lua/plenary.nvim'} }
