@@ -1,3 +1,9 @@
+require("neo-tree").setup {
+    filesystem = {
+        group_empty_dirs = true
+    }
+}
+
 vim.keymap.set("n", "<leader>e", function() vim.cmd("Neotree position=left toggle=true") end, { desc = "Toggle Neotree" })
 
 vim.keymap.set('n', '-', function()
