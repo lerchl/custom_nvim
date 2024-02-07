@@ -2,6 +2,7 @@ local git_blame = require("gitblame")
 
 require("lualine").setup {
     options = {
+        theme = "tokyonight",
         disabled_filetypes = { "alpha" },
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},

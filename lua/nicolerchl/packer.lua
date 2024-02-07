@@ -21,29 +21,21 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- use {
-  --   'embark-theme/vim',
-  --   as = 'embark',
-  --   config = function()
-  --     vim.cmd('colorscheme embark')
-  --   end
-  -- }
-
-  -- use {
-  --     "rebelot/kanagawa.nvim",
-  --     as = "kanagawa",
-  --     config = function()
-  --         vim.cmd('colorscheme kanagawa')
-  --     end
-  -- }
 
   use {
-        'nyoom-engineering/oxocarbon.nvim',
-        as = 'oxocarbon',
+        'folke/tokyonight.nvim',
         config = function()
-            vim.cmd('colorscheme oxocarbon')
+            vim.cmd('colorscheme tokyonight-night')
         end
   }
+
+  -- use {
+  --       'nyoom-engineering/oxocarbon.nvim',
+  --       as = 'oxocarbon',
+  --       config = function()
+  --           vim.cmd('colorscheme oxocarbon')
+  --       end
+  -- }
 
   use {
     "folke/which-key.nvim",
