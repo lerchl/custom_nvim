@@ -8,13 +8,6 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-    "kdheepak/lazygit.nvim",
-    requires = {
-        "nvim-lua/plenary.nvim",
-    },
-  }
-
-  use {
     'goolord/alpha-nvim',
     config = function ()
         require'alpha'.setup(require'alpha.themes.dashboard'.config)
