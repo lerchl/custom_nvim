@@ -27,13 +27,12 @@ end
 
 local close_tab = function()
     local buffer_count = #vim.fn.getbufinfo({buflisted = 1})
-
+    
     if buffer_count > 1 then
         vim.cmd("bp | bd #")
     else
         vim.cmd("bd")
         vim.cmd("Alpha")
-        -- close the only buffer
     end
 end
 

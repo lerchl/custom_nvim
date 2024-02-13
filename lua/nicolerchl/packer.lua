@@ -21,31 +21,17 @@ return require('packer').startup(function(use)
 		end
 	}
 
-	use {
-		"folke/which-key.nvim",
-		config = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-			require("which-key").setup {
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			}
-		end
-	}
+	use "folke/which-key.nvim"
+
+	use "sindrets/diffview.nvim"
 
 	use {
 		"NeogitOrg/neogit",
 		dependencies = {
-			"nvim-lua/plenary.nvim",         -- required
-			"sindrets/diffview.nvim",        -- optional - Diff integration
-
-			-- Only one of these is needed, not both.
-			"nvim-telescope/telescope.nvim", -- optional
-		},
-		config = function()
-			require('neogit').setup()
-		end
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim",
+			"nvim-telescope/telescope.nvim"
+		}
 	}
 
 	use {
