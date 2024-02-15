@@ -1,3 +1,8 @@
+require("diffview").setup {
+	diff_binaries = false,
+	use_icons = false
+}
+
 local toggle_diffview = function()
 	if next(require('diffview.lib').views) == nil then
 		vim.cmd('DiffviewOpen')
