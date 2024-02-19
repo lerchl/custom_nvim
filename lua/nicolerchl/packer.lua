@@ -30,7 +30,7 @@ return require('packer').startup(function(use)
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"sindrets/diffview.nvim",
-			"nvim-telescope/telescope.nvim"
+			"ibhagwan/fzf-lua"
 		}
 	}
 
@@ -42,7 +42,7 @@ return require('packer').startup(function(use)
 	use "f-person/git-blame.nvim"
 
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.5',
+		'nvim-telescope/telescope.nvim',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
