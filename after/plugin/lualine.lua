@@ -2,9 +2,9 @@ local git_blame = require("gitblame")
 
 require("lualine").setup {
     options = {
-        theme = "tokyonight",
+        theme = "catppuccin",
         component_separators = '',
-		section_separators = { left = '', right = '' },
+		section_separators = { left = ' ', right = '' },
 		globalstatus = true
     },
     sections = {

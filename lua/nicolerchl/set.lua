@@ -21,3 +21,5 @@ vim.opt.colorcolumn = "80,120"
 
 vim.opt.hidden = true
 
+vim.opt.formatoptions:remove("cro")
+
