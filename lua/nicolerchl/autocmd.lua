@@ -16,23 +16,25 @@ autocmd('BufEnter', {
 	command = 'set fo-=c fo-=r fo-=o'
 })
 
-autocmd("BufEnter", {
-	callback = function()
-		local filetype = vim.bo.filetype;
-		if filetype == "neo-tree" or filetype == "NeogitStatus" then
-			local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
-			hl.blend = 100
-			vim.api.nvim_set_hl(0, 'Cursor', hl)
-			vim.opt.guicursor:append('a:Cursor/lCursor')
-			vim.opt.colorcolumn = ""
-		else
-			local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
-			hl.blend = 0
-			vim.api.nvim_set_hl(0, 'Cursor', hl)
-			vim.opt.guicursor:remove('a:Cursor/lCursor')
-			vim.opt.colorcolumn = "80,120"
-		end
+local hide_cursor_and_colorcolumn_if_needed = function()
+	local filetype = vim.bo.filetype;
+	if filetype == "neo-tree" or filetype == "NeogitStatus" or filetype == "alpha" then
+		local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
+		hl.blend = 100
+		vim.api.nvim_set_hl(0, 'Cursor', hl)
+		vim.opt.guicursor:append('a:Cursor/lCursor')
+		vim.opt.colorcolumn = ""
+	else
+		local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
+		hl.blend = 0
+		vim.api.nvim_set_hl(0, 'Cursor', hl)
+		vim.opt.guicursor:remove('a:Cursor/lCursor')
+		vim.opt.colorcolumn = "80,120"
 	end
+end
+
+autocmd("FileType", {
+	callback = hide_cursor_and_colorcolumn_if_needed
 })
 
 -- local function is_no_name_buf(buf)
