@@ -2,7 +2,11 @@ local git_blame = require("gitblame")
 
 local git_blame_condition = function()
 	local filetype = vim.bo.filetype;
-	return git_blame.is_blame_text_available() and filetype ~= "neo-tree" and filetype ~= "toggleterm" and filetype ~= "alpha"
+	return git_blame.is_blame_text_available() and
+			filetype ~= "neo-tree" and
+			filetype ~= "toggleterm" and
+			filetype ~= "alpha" and
+			filetype ~= "NeogitStatus"
 end
 
 require("lualine").setup {
