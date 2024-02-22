@@ -27,13 +27,7 @@ return require('packer').startup(function(use)
 	-- 	end
 	-- }
 
-	use {
-		"catppuccin/nvim",
-		as = "catppuccin",
-		config = function()
-			vim.cmd("colorscheme catppuccin-mocha")
-		end
-	}
+	use { "catppuccin/nvim", as = "catppuccin" }
 
 	use "folke/which-key.nvim"
 

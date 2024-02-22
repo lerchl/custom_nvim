@@ -37,6 +37,10 @@ autocmd("FileType", {
 	callback = hide_cursor_and_colorcolumn_if_needed
 })
 
+autocmd("BufEnter", {
+	callback = hide_cursor_and_colorcolumn_if_needed
+})
+
 -- local function is_no_name_buf(buf)
 -- 	return
 -- 	vim.api.nvim_buf_is_loaded(buf)
