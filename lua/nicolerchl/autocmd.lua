@@ -18,7 +18,7 @@ autocmd('BufEnter', {
 
 local hide_cursor_and_colorcolumn_if_needed = function()
 	local filetype = vim.bo.filetype;
-	if filetype == "neo-tree" or filetype == "NeogitStatus" or filetype == "alpha" then
+	if filetype == "neo-tree" or filetype == "alpha" then
 		local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
 		hl.blend = 100
 		vim.api.nvim_set_hl(0, 'Cursor', hl)
