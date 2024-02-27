@@ -17,9 +17,10 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-	ensure_installed = { 'lua_ls', "clangd", 'rust_analyzer', "tsserver", "eslint" },
+	ensure_installed = { 'lua_ls', "clangd", "jdtls",'rust_analyzer', "tsserver", "eslint" },
 	handlers = {
 		lsp_zero.default_setup,
+		jdtls = lsp_zero.noop,
 		lua_ls = function()
 			local lua_opts = lsp_zero.nvim_lua_ls()
 			require('lspconfig').lua_ls.setup(lua_opts)
