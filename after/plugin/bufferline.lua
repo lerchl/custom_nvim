@@ -12,8 +12,9 @@ bufferline.setup {
 				text_align = "center",
 				separator = true
 			}
-		}
-	}
+		},
+	},
+	highlights = require("catppuccin.groups.integrations.bufferline").get()
 }
 
 for i = 1, 9 do

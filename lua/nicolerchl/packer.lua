@@ -14,6 +14,8 @@ return require('packer').startup(function(use)
 		end
 	}
 
+	use "nvim-tree/nvim-web-devicons"
+
 	-- use {
 	-- 	'folke/tokyonight.nvim',
 	-- 	config = function()
