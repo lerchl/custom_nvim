@@ -11,5 +11,5 @@ local toggle_diffview = function()
 	end
 end
 
-vim.keymap.set("n", "<leader>gd", toggle_diffview, { desc = "Toggle Diffview" })
+vim.keymap.set("n", "<leader>dd", toggle_diffview, { desc = "Toggle Diffview" })
 
