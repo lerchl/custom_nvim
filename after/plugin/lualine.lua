@@ -39,10 +39,10 @@ require("lualine").setup {
 	sections = {
 		lualine_a = { 'mode' },
 		lualine_b = { 'branch' },
-		lualine_c = { "diff", "diagnostics" },
+		lualine_c = { "filename", "diff", "diagnostics" },
 		lualine_x = { { git_blame.get_current_blame_text, cond = git_blame_condition }, "encoding" },
 		lualine_y = { copilot_indicator, "filetype" },
-		lualine_z = { 'location', "progress" }
+		lualine_z = { "location", "progress"  }
 	},
 }
 

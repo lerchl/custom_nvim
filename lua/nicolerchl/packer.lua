@@ -62,6 +62,19 @@ return require('packer').startup(function(use)
 	use "terrortylor/nvim-comment"
 
 	use ('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
+	use 'nvim-treesitter/nvim-treesitter-context'
+
+	use({
+		"utilyre/barbecue.nvim",
+		tag = "*",
+		requires = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
+		config = function()
+			require("barbecue").setup()
+		end
+	})
 
 	use ('github/copilot.vim')
 
