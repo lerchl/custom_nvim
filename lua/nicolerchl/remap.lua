@@ -15,7 +15,18 @@ vim.keymap.set("n", "<C-Right>", "<C-w>l")
 vim.keymap.set("n", "<C-S-Right>", "<C-w>v<C-w>p")
 vim.keymap.set("n", "<C-S-Left>", "<C-w>q")
 
+-- tabs
+for i = 1, 9 do
+	vim.keymap.set(
+		"n",
+		("<leader>t%s"):format(i),
+		("%sgt"):format(i),
+		{ desc = ("Tab %s"):format(i) }
+	)
+end
+vim.keymap.set("n", "<leader>tw", ":tabclose<CR>", { desc = "Close tab" })
+
 -- find
-vim.keymap.set("n", "<leader>fr", "cgn", { silent = true, desc = "replace" })
-vim.keymap.set("n", "<leader>fs", ":noh<CR>", { silent = true, desc = "stop finding" })
+vim.keymap.set("n", "<leader>fr", "cgn", { silent = true, desc = "Replace" })
+vim.keymap.set("n", "<leader>fs", ":noh<CR>", { silent = true, desc = "Stop finding" })
 

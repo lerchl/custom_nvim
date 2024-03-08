@@ -70,10 +70,7 @@ return require('packer').startup(function(use)
 		requires = {
 			"SmiteshP/nvim-navic",
 			"nvim-tree/nvim-web-devicons", -- optional dependency
-		},
-		config = function()
-			require("barbecue").setup()
-		end
+		}
 	})
 
 	use ('github/copilot.vim')

@@ -1,4 +1,5 @@
 local bufferline = require("bufferline")
+
 bufferline.setup {
 	options = {
 		numbers = "ordinal",
@@ -22,11 +23,14 @@ for i = 1, 9 do
 		"n",
 		("<leader>%s"):format(i),
 		function() bufferline.go_to_buffer(i, true) end,
-		{ desc = ("Tab %s"):format(i) }
+		{ desc = ("Buffer %s"):format(i) }
 	)
 end
 
-local close_tab = function()
+vim.keymap.set("n", "<A-Right>", function() bufferline.cycle(1) end, { desc = "Next buffer" })
+vim.keymap.set("n", "<A-Left>", function() bufferline.cycle(-1) end, { desc = "Previous buffer" })
+
+local close_buffer = function()
 	local buffer_count = #vim.fn.getbufinfo({buflisted = 1})
 
 	if buffer_count > 1 then
@@ -36,10 +40,9 @@ local close_tab = function()
 	end
 end
 
-vim.keymap.set("n", "t", "")
-vim.keymap.set("n", "tw", close_tab, { desc = "Close current tab" })
-vim.keymap.set("n", "<leader>tc<Left>", vim.cmd.BufferLineCloseLeft, { desc = "Close left tabs" })
-vim.keymap.set("n", "<leader>tc<Right>", vim.cmd.BufferLineCloseRight, { desc = "Close right tabs" })
-vim.keymap.set("n", "<leader>tco", vim.cmd.BufferLineCloseOther, { desc = "Close other tabs" })
-vim.keymap.set("n", "<leader>tcw", function() vim.cmd("bufdo bwipeout") end, { desc = "Close all tabs" })
+vim.keymap.set("n", "<leader>w", close_buffer, { desc = "Close current buffer" })
+vim.keymap.set("n", "<leader>bc<Left>", vim.cmd.BufferLineCloseLeft, { desc = "Close left buffers" })
+vim.keymap.set("n", "<leader>bc<Right>", vim.cmd.BufferLineCloseRight, { desc = "Close right buffers" })
+vim.keymap.set("n", "<leader>bco", vim.cmd.BufferLineCloseOther, { desc = "Close other buffers" })
+vim.keymap.set("n", "<leader>bcw", function() vim.cmd("bufdo bwipeout") end, { desc = "Close all buffers" })
 
