@@ -1,5 +1,5 @@
 require("tokyonight").setup {
-	style = "storm",
+	style = "night",
 	terminal_colors = true,
 	styles = {
 		comments = { italic = false },
@@ -7,5 +7,5 @@ require("tokyonight").setup {
 	},
 }
 
-vim.cmd("colorscheme tokyonight-storm")
+vim.cmd("colorscheme tokyonight-night")
 
