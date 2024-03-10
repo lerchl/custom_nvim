@@ -1,22 +1,11 @@
-require("catppuccin").setup {
-	no_italic = true,
-	color_overrides = {
-		mocha = {
-			base = "#111111",
-			mantle = "#111111",
-			crust = "#111111"
-		}
+require("tokyonight").setup {
+	style = "storm",
+	terminal_colors = true,
+	styles = {
+		comments = { italic = false },
+		keywords = { italic = false },
 	},
-	integrations = {
-		alpha = true,
-		mason = true,
-		treesitter = true,
-		telescope = {
-			enabled = true
-		},
-		which_key = true
-	}
 }
 
-vim.cmd("colorscheme catppuccin-mocha")
+vim.cmd("colorscheme tokyonight-storm")
 

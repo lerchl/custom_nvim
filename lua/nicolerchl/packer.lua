@@ -16,20 +16,7 @@ return require('packer').startup(function(use)
 
 	use "nvim-tree/nvim-web-devicons"
 
-	-- use {
-	-- 	'folke/tokyonight.nvim',
-	-- 	config = function()
-	-- 		vim.cmd('colorscheme tokyonight-night')
-	-- 	end
-
-	-- use {
-	-- 	"nyoom-engineering/oxocarbon.nvim",
-	-- 	config = function()
-	-- 		vim.cmd('colorscheme oxocarbon')
-	-- 	end
-	-- }
-
-	use { "catppuccin/nvim", as = "catppuccin" }
+	use 'folke/tokyonight.nvim'
 
 	use "folke/which-key.nvim"
 

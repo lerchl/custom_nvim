@@ -6,6 +6,9 @@ bufferline.setup {
 		buffer_close_icon = "",
 		close_icon = "",
 		diagnostics = "nvim_lsp",
+		style_preset = {
+			bufferline.style_preset.no_italic
+		},
 		offsets = {
 			{
 				filetype = "neo-tree",
@@ -15,7 +18,6 @@ bufferline.setup {
 			}
 		},
 	},
-	highlights = require("catppuccin.groups.integrations.bufferline").get()
 }
 
 for i = 1, 9 do

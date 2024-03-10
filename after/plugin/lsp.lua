@@ -30,7 +30,6 @@ require('mason-lspconfig').setup({
 })
 
 local cmp = require('cmp')
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
 	sources = {
@@ -40,11 +39,32 @@ cmp.setup({
 		{ name = 'luasnip' , keyword_length = 2},
 		{ name = 'buffer' , keyword_length = 3},
 	},
-	formatting = lsp_zero.cmp_format(),
 	mapping = cmp.mapping.preset.insert({
 		['<C-Space>'] = cmp.mapping.complete(),
 		["<Tab>"] = cmp.mapping.confirm(),
 		["<S-Tab>"] = cmp.mapping.close()
-	})
+	}),
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
+	formatting = {
+		-- changing the order of fields so the icon is the first
+		fields = {'menu', 'abbr', 'kind'},
+
+		-- here is where the change happens
+		format = function(entry, item)
+			local menu_icon = {
+				nvim_lsp = 'λ',
+				luasnip = '⋗',
+				buffer = 'Ω',
+				path = '🖫',
+				nvim_lua = 'Π',
+			}
+
+			item.menu = menu_icon[entry.source.name]
+			return item
+		end,
+	}
 })
 

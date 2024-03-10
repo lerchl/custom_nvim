@@ -26,12 +26,9 @@ local copilot_indicator = function()
 	return spinners[frame + 1]
 end
 
-local custom_theme = require("lualine.themes.nightfly")
-custom_theme.normal.c.bg = "#181818"
-
 require("lualine").setup {
 	options = {
-		theme = custom_theme,
+		theme = "tokyonight",
 		component_separators = '',
 		section_separators = { left = '', right = '' },
 		globalstatus = true

@@ -1,13 +1,14 @@
 require("neo-tree").setup {
 	enable_git_status = false,
     filesystem = {
-        group_empty_dirs = true,
-		hijack_netrw_behaviour = "open_default"
+        group_empty_dirs = true
     },
 	window = {
-		position = "current"
+		position = "left"
 	}
 }
+
+vim.keymap.set('n', '<leader>e', ":Neotree toggle<CR>", { desc = "Toggle neotree" });
 
 vim.keymap.set('n', '-', function()
     local reveal_file = vim.fn.expand('%:p')
@@ -22,6 +23,6 @@ vim.keymap.set('n', '-', function()
         end
     end
     require('neo-tree.command').execute({ reveal_file = reveal_file }) end,
-    { desc = "Show current file in Neotree" }
+    { desc = "Show current file in neotree" }
 );
 

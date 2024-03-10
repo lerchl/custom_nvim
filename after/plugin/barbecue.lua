@@ -1,2 +1,4 @@
-require("barbecue").setup()
+require("barbecue").setup {
+	theme = "tokyonight"
+}
 
