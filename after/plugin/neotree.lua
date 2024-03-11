@@ -4,11 +4,9 @@ require("neo-tree").setup {
         group_empty_dirs = true
     },
 	window = {
-		position = "left"
+		position = "current"
 	}
 }
-
-vim.keymap.set('n', '<leader>e', ":Neotree toggle<CR>", { desc = "Toggle neotree" });
 
 vim.keymap.set('n', '-', function()
     local reveal_file = vim.fn.expand('%:p')
