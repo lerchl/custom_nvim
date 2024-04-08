@@ -14,4 +14,5 @@ vim.keymap.set('n', "<leader>ff", builtin.find_files, { desc = "Find Files" })
 vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "Find Git Files" })
 vim.keymap.set("n", "<leader>fo", function() builtin.treesitter{ ignore_symbols= { "import" } } end, { desc = "Find Treesitter" })
 vim.keymap.set("n", "<leader>ft", builtin.live_grep, { desc = "Find Text" })
+vim.keymap.set("n", "<leader>fm", builtin.keymaps, { desc = "Find Keymaps" })
 
