@@ -15,6 +15,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.hidden = true
 vim.opt.fixendofline = false
+vim.opt.wrap = false
 
 vim.api.nvim_set_option("clipboard", "unnamed")
 
