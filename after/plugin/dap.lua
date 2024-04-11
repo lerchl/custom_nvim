@@ -9,3 +9,5 @@ dapui.setup()
 
 vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "Toggle DAP UI" })
 
+require("dap.ext.vscode").load_launchjs()
+
