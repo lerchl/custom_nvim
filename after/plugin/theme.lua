@@ -3,7 +3,10 @@ vim.cmd("colorscheme tokyonight-moon")
 require("tokyonight").setup {
 	style = "moon",
 	terminal_colors = true,
+	transparent = true,
 	styles = {
+		sidebar = "transparent",
+		floats = "transparent",
 		comments = { italic = false },
 		keywords = { italic = false },
 	},
