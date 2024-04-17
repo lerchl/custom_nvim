@@ -83,5 +83,8 @@ vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "Toggle DAP UI" })
 vim.keymap.set("n", "<leader>dj", function() dapui.toggle(2) end, { desc = "Toggle DAP console" })
 vim.keymap.set("n", "<leader>de", dapui.eval, { desc = "Evaluate expression" })
 
+dap.listeners.before.attach.dapui_config = function() dapui.open(2) end
+dap.listeners.before.launch.dapui_config = function() dapui.open(2) end
+
 require("dap.ext.vscode").load_launchjs()
 
