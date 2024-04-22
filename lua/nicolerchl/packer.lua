@@ -50,6 +50,16 @@ return require('packer').startup(function(use)
 
 	use { 'nvim-treesitter/nvim-treesitter', tag = "v0.9.2", run = ':TSUpdate' }
 	use 'nvim-treesitter/nvim-treesitter-context'
+	use {
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		after = "nvim-treesitter",
+		requires = "nvim-treesitter/nvim-treesitter",
+	}
+
+	use {
+		"kylechui/nvim-surround",
+		tag = "*"
+	}
 
 	use({
 		"utilyre/barbecue.nvim",
@@ -78,8 +88,6 @@ return require('packer').startup(function(use)
 	}
 
 	use "echasnovski/mini.pairs"
-
-	use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
 
 	use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 
