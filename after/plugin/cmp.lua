@@ -1,5 +1,4 @@
 local cmp = require("cmp")
--- local copilot = require("copilot")
 
 cmp.setup {
     mapping = cmp.mapping.preset.insert {

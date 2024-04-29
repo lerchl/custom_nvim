@@ -16,7 +16,9 @@ return require('packer').startup(function(use)
 
 	use "nvim-tree/nvim-web-devicons"
 
-	use 'folke/tokyonight.nvim'
+	-- use "scottmckendry/cyberdream.nvim";
+	-- use "nyoom-engineering/oxocarbon.nvim"
+	use "EdenEast/nightfox.nvim"
 
 	use "folke/which-key.nvim"
 
@@ -33,7 +35,7 @@ return require('packer').startup(function(use)
 
 	use {
 		'nvim-lualine/lualine.nvim',
-		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+		requires = { 'nvim-tree/nvim-web-devicons' }
 	}
 
 	use "f-person/git-blame.nvim"
@@ -44,12 +46,10 @@ return require('packer').startup(function(use)
 	}
 
 	use "lukas-reineke/indent-blankline.nvim"
-	use "echasnovski/mini.indentscope"
 
 	use "terrortylor/nvim-comment"
 
 	use { 'nvim-treesitter/nvim-treesitter', tag = "v0.9.2", run = ':TSUpdate' }
-	use 'nvim-treesitter/nvim-treesitter-context'
 	use {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		after = "nvim-treesitter",
@@ -60,15 +60,6 @@ return require('packer').startup(function(use)
 		"kylechui/nvim-surround",
 		tag = "*"
 	}
-
-	use({
-		"utilyre/barbecue.nvim",
-		tag = "*",
-		requires = {
-			"SmiteshP/nvim-navic",
-			"nvim-tree/nvim-web-devicons", -- optional dependency
-		}
-	})
 
 	use ('github/copilot.vim')
 
@@ -109,7 +100,10 @@ return require('packer').startup(function(use)
 		}
 	}
 
+	use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig" }
+
 	use { "mfussenegger/nvim-jdtls", requires = "mfussenegger/nvim-dap" }
+
 	use "mfussenegger/nvim-dap"
 	use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
 end)

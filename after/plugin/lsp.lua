@@ -14,7 +14,20 @@ lsp_zero.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, { buffer = bufnr, desc = "Show all references" })
 	vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, { buffer = bufnr, desc = "Rename" })
 	vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, { buffer = bufnr, desc = "Signature help" })
+
+	if client.server_capabilities.documentSymbolProvider then
+		require('nvim-navic').attach(client, bufnr)
+	end
 end)
+
+-- vim.lsp.buf.incoming_calls()
+-- vim.lsp.buf.outgoing_calls()
+
+-- autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+-- autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+-- autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+
+-- vim.lsp.buf.typehierarchy()
 
 require('mason').setup({})
 require('mason-lspconfig').setup({

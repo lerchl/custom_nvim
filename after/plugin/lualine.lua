@@ -1,4 +1,5 @@
 local git_blame = require("gitblame")
+local navic = require("nvim-navic")
 
 local git_blame_condition = function()
 	local filetype = vim.bo.filetype;
@@ -9,36 +10,50 @@ local git_blame_condition = function()
 	filetype ~= "NeogitStatus"
 end
 
-local copilot_indicator = function()
-	local client = vim.lsp.get_active_clients({ name = "copilot" })[1]
-	if client == nil then
-		return "󱙻"
+local get_named_scope = function(data, type)
+	for _, v in pairs(data) do
+		if v.type == type then
+			return v
+		end
+	end
+	return nil
+end
+
+local get_scope = function()
+	local data = navic.get_data()
+
+	local scope = get_named_scope(data, "Function")
+
+	if scope == nil then
+		scope = get_named_scope(data, "Class")
 	end
 
-	if vim.tbl_isempty(client.requests) then
-		return "󱜚"
+	if scope == nil then
+		return ""
 	end
 
-	local spinners = { "←", "↖", "↑", "↗", "→", "↘", "↓", "↙" }
-	local ms = vim.loop.hrtime() / 1000000
-	local frame = math.floor(ms / 120) % #spinners
-
-	return spinners[frame + 1]
+	return scope.name
 end
 
 require("lualine").setup {
 	options = {
-		theme = "tokyonight",
-		component_separators = '',
-		section_separators = { left = '', right = '' },
+		component_separators = "",
+		section_separators = { left = '', right = '' },
 		globalstatus = true
 	},
 	sections = {
 		lualine_a = { 'mode' },
 		lualine_b = { 'branch' },
 		lualine_c = { "filename", "diff", "diagnostics" },
-		lualine_x = { { git_blame.get_current_blame_text, cond = git_blame_condition }, "encoding" },
-		lualine_y = { copilot_indicator, "filetype" },
+		lualine_x = {
+			{ git_blame.get_current_blame_text, cond = git_blame_condition },
+			{ get_scope, cond = navic.is_available, separator = { left = "" }, color = { fg = "000000", bg = "ffffff" }  },
+			{ function() return "󰅁" end, padding = { left = 0, right = 0 }, color = { fg = "f72585" }, draw_empty = true },
+			{ function() return "󰅁" end, padding = { left = 0, right = 0 }, color = { fg = "3f37c9" }, draw_empty = true },
+			{ function() return "󰅁" end, padding = { left = 0, right = 0 }, color = { fg = "4cc9f0" }, draw_empty = true },
+			"encoding"
+		},
+		lualine_y = { "filetype" },
 		lualine_z = { "location", "progress"  }
 	},
 }
