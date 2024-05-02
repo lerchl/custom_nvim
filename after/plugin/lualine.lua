@@ -1,3 +1,5 @@
+local util = require("nicolerchl.util")
+
 local git_blame = require("gitblame")
 local navic = require("nvim-navic")
 
@@ -10,50 +12,42 @@ local git_blame_condition = function()
 	filetype ~= "NeogitStatus"
 end
 
-local get_named_scope = function(data, type)
-	for _, v in pairs(data) do
-		if v.type == type then
-			return v
-		end
+local git_blame_getter = function()
+	local blame_text = git_blame.get_current_blame_text()
+
+	if string.len(blame_text) > 65 then
+		return string.sub(blame_text, 1, 65) .. "..."
 	end
-	return nil
+
+	return blame_text
+end
+
+local keep_scope = function(scope)
+	return scope.type == "Method" or
+			scope.type == "Function" or
+			scope.type == "Constructor" or
+			scope.type == "Class"
 end
 
 local get_scope = function()
-	local data = navic.get_data()
-
-	local scope = get_named_scope(data, "Function")
-
-	if scope == nil then
-		scope = get_named_scope(data, "Class")
-	end
-
-	if scope == nil then
-		return ""
-	end
-
-	return scope.name
+	local data = util.filter_table(navic.get_data(), keep_scope)
+	if #data == 0 then return "no scope" end
+	local scope = data[#data]
+	return scope.icon .. scope.name
 end
 
 require("lualine").setup {
 	options = {
 		component_separators = "",
-		section_separators = { left = '', right = '' },
+		section_separators = "",
 		globalstatus = true
 	},
 	sections = {
 		lualine_a = { 'mode' },
-		lualine_b = { 'branch' },
-		lualine_c = { "filename", "diff", "diagnostics" },
-		lualine_x = {
-			{ git_blame.get_current_blame_text, cond = git_blame_condition },
-			{ get_scope, cond = navic.is_available, separator = { left = "" }, color = { fg = "000000", bg = "ffffff" }  },
-			{ function() return "󰅁" end, padding = { left = 0, right = 0 }, color = { fg = "f72585" }, draw_empty = true },
-			{ function() return "󰅁" end, padding = { left = 0, right = 0 }, color = { fg = "3f37c9" }, draw_empty = true },
-			{ function() return "󰅁" end, padding = { left = 0, right = 0 }, color = { fg = "4cc9f0" }, draw_empty = true },
-			"encoding"
-		},
-		lualine_y = { "filetype" },
+		lualine_b = {{ 'branch', separator = { left = "", right = "" } }},
+		lualine_c = { "filename", { get_scope, cond = navic.is_available, separator = { left = "", right = "" }, color = { fg = "000000", bg = "ffffff" } }, "diff", "diagnostics" },
+		lualine_x = {{ git_blame_getter, cond = git_blame_condition }, "encoding" },
+		lualine_y = { },
 		lualine_z = { "location", "progress"  }
 	},
 }
