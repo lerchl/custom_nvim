@@ -43,12 +43,12 @@ require("lualine").setup {
 		globalstatus = true
 	},
 	sections = {
-		lualine_a = { 'mode' },
-		lualine_b = {{ 'branch', separator = { left = "", right = "" } }},
+		lualine_a = {{ "mode", color = { fg = "eeeeee" } }},
+		lualine_b = {{ "branch", separator = { left = "", right = "" } }},
 		lualine_c = { "filename", { get_scope, cond = navic.is_available, separator = { left = "", right = "" }, color = { fg = "000000", bg = "ffffff" } }, "diff", "diagnostics" },
 		lualine_x = {{ git_blame_getter, cond = git_blame_condition }, "encoding" },
 		lualine_y = { },
-		lualine_z = { "location", "progress"  }
+		lualine_z = {{ "location", separator = { left = "" }, color = { fg = "eeeeee" } }, { "progress", color = { fg = "eeeeee" } }}
 	},
 }
 
