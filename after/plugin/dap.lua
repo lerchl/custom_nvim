@@ -1,5 +1,13 @@
 local dap = require("dap")
-vim.keymap.set("n", "<F5>", dap.continue, { desc = "Continue" })
+
+local continue = function()
+	if vim.fn.filereadable(".vscode/launch.json") then
+		require("dap.ext.vscode").load_launchjs()
+	end
+	dap.continue()
+end
+
+vim.keymap.set("n", "<F5>", continue, { desc = "Start / Continue debugging" })
 vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Step over" })
 vim.keymap.set("n", "<F11>", dap.step_into, { desc = "Step into" })
 vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
@@ -86,5 +94,4 @@ vim.keymap.set("n", "<leader>de", dapui.eval, { desc = "Evaluate expression" })
 dap.listeners.before.attach.dapui_config = function() dapui.open(2) end
 dap.listeners.before.launch.dapui_config = function() dapui.open(2) end
 
-require("dap.ext.vscode").load_launchjs()
 
