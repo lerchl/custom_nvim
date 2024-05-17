@@ -17,6 +17,7 @@ lsp_zero.on_attach(function(client, bufnr)
 
 	if client.server_capabilities.documentSymbolProvider then
 		require('nvim-navic').attach(client, bufnr)
+		require("nvim-navbuddy").attach(client, bufnr)
 	end
 end)
 
@@ -35,7 +36,7 @@ require('mason-lspconfig').setup({
 	handlers = {
 		lsp_zero.default_setup,
 		jdtls = lsp_zero.noop,
-		eslint = lsp_zero.noop,
+		-- eslint = lsp_zero.noop,
 		lua_ls = function()
 			local lua_opts = lsp_zero.nvim_lua_ls()
 			require('lspconfig').lua_ls.setup(lua_opts)

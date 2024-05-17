@@ -61,7 +61,7 @@ return require('packer').startup(function(use)
 		tag = "*"
 	}
 
-	use ('github/copilot.vim')
+	-- use ('github/copilot.vim')
 
 	use {'stevearc/dressing.nvim'}
 
@@ -101,6 +101,15 @@ return require('packer').startup(function(use)
 	}
 
 	use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig" }
+	use {
+		"SmiteshP/nvim-navbuddy",
+		requires = {
+			"neovim/nvim-lspconfig",
+			"SmiteshP/nvim-navic",
+			"MunifTanjim/nui.nvim",
+			"nvim-telescope/telescope.nvim" -- Optional
+		}
+	}
 
 	use { "mfussenegger/nvim-jdtls", requires = "mfussenegger/nvim-dap" }
 
