@@ -40,8 +40,6 @@ return require('packer').startup(function(use)
 
 	use "f-person/git-blame.nvim"
 
-	use "tris203/precognition.nvim"
-
 	use {
 		'nvim-telescope/telescope.nvim',
 		requires = {{ 'nvim-lua/plenary.nvim' }}
