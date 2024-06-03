@@ -80,7 +80,7 @@ return require('packer').startup(function(use)
 
 	use "echasnovski/mini.pairs"
 
-	use {'akinsho/bufferline.nvim', tag = "v4.5.3", requires = 'nvim-tree/nvim-web-devicons'}
+	use {'akinsho/bufferline.nvim', tag = "v4.6.1", requires = 'nvim-tree/nvim-web-devicons'}
 
 	use {
 		'VonHeikemen/lsp-zero.nvim',
