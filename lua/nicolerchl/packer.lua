@@ -18,7 +18,8 @@ return require('packer').startup(function(use)
 
 	-- use "scottmckendry/cyberdream.nvim";
 	-- use "nyoom-engineering/oxocarbon.nvim"
-	use "EdenEast/nightfox.nvim"
+	-- use "EdenEast/nightfox.nvim"
+	use { "catppuccin/nvim", as = "catppuccin" }
 
 	use "folke/which-key.nvim"
 

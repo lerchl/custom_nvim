@@ -46,11 +46,17 @@
 
 -- CARBONFOX THEME
 
-require("nightfox").setup {
-	options = {
-		transparent = true
-	}
+-- require("nightfox").setup {
+	-- options = {
+	-- 	transparent = true
+	-- }
+-- }
+
+-- CATPUCCIN
+require("catppuccin").setup {
+	flavour = "mocha",
+	no_italic = true
 }
 
-vim.cmd("colorscheme carbonfox")
+vim.cmd("colorscheme catppuccin")
 
