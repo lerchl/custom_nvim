@@ -23,5 +23,5 @@ navbuddy.setup {
 	custom_hl_group = nil,     -- "Visual" or any other hl group to use instead of inverted colors
 }
 
-vim.keymap.set("n", "<leader>fo", navbuddy.open, { desc = "Open Navbuddy" })
+vim.keymap.set("n", "<leader>fO", navbuddy.open, { desc = "Open Navbuddy" })
 
