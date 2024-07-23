@@ -21,6 +21,7 @@ local show_current_file = function()
 			reveal_file = vim.fn.getcwd()
 		end
 	end
+
 	require('neo-tree.command').execute({ reveal_file = reveal_file, toggle = true })
 end
 

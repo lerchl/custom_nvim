@@ -62,11 +62,7 @@ return require('packer').startup(function(use)
 		tag = "*"
 	}
 
-	-- use ('github/copilot.vim')
-
 	use {'stevearc/dressing.nvim'}
-
-	use { "akinsho/toggleterm.nvim", tag = '*' }
 
 	use {
 		"nvim-neo-tree/neo-tree.nvim",

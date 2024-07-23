@@ -1,6 +1,6 @@
 vim.opt.relativenumber = true
 vim.opt.nu = true
-vim.opt.statuscolumn = "%s %l %r "
+vim.opt.statuscolumn = "%s %r "
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
