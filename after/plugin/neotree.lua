@@ -5,7 +5,7 @@ require("neo-tree").setup {
 		use_libuv_file_watcher = true
 	},
 	window = {
-		position = "current"
+		position = "float"
 	}
 }
 
@@ -21,7 +21,7 @@ local show_current_file = function()
 			reveal_file = vim.fn.getcwd()
 		end
 	end
-	require('neo-tree.command').execute({ reveal_file = reveal_file })
+	require('neo-tree.command').execute({ reveal_file = reveal_file, toggle = true })
 end
 
 vim.keymap.set('n', '-', show_current_file, { desc = "Show current file in neotree" });
