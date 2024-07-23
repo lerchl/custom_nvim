@@ -55,7 +55,14 @@
 -- CATPUCCIN
 require("catppuccin").setup {
 	flavour = "mocha",
-	no_italic = true
+	no_italic = true,
+	color_overrides = {
+		mocha = {
+			base = "#000005",
+			mantle = "#000005",
+			crust = "#000005",
+		},
+	}
 }
 
 vim.cmd("colorscheme catppuccin")
