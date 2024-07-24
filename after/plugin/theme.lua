@@ -1,6 +1,4 @@
 -- TOKYO NIGHT MOON THEME
--- vim.cmd("colorscheme tokyonight-moon")
---
 -- require("tokyonight").setup {
 -- 	style = "moon",
 -- 	terminal_colors = true,
@@ -30,11 +28,11 @@
 
 -- CYBERDREAM THEME
 -- require("cyberdream").setup {
--- 	transparent = true,
+-- 	-- transparent = true,
 -- 	borderless_telescope = false,
 -- 	terminal_colors = true
 -- }
-
+--
 -- vim.cmd("colorscheme cyberdream")
 
 -- OXOCARBON THEME
@@ -56,14 +54,13 @@
 require("catppuccin").setup {
 	flavour = "mocha",
 	no_italic = true,
-	color_overrides = {
-		mocha = {
-			base = "#000005",
-			mantle = "#000005",
-			crust = "#000005",
-		},
-	}
+	-- color_overrides = {
+	-- 	mocha = {
+	-- 		base = "#000010",
+	-- 		mantle = "#000005",
+	-- 		crust = "#000005",
+	-- 	},
+	-- }
 }
 
 vim.cmd("colorscheme catppuccin")
-
