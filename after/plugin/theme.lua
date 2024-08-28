@@ -54,13 +54,20 @@
 require("catppuccin").setup {
 	flavour = "mocha",
 	no_italic = true,
-	-- color_overrides = {
-	-- 	mocha = {
-	-- 		base = "#000010",
-	-- 		mantle = "#000005",
-	-- 		crust = "#000005",
-	-- 	},
-	-- }
+	color_overrides = {
+		mocha = {
+			base = "#020210",
+			mantle = "#020210",
+			crust = "#020210",
+		},
+	},
+	custom_highlights = function (C)
+		return {
+			WinSeparator = { fg = "#8565C4" },
+			FloatBorder = { fg = "#8565C4" },
+			VertSplit = { fg = "#8565C4" }
+		}
+	end
 }
 
 vim.cmd("colorscheme catppuccin")

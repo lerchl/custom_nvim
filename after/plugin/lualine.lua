@@ -1,9 +1,11 @@
 local util = require("nicolerchl.util")
 
-local git_blame = require("gitblame")
-local navic = require("nvim-navic")
+----- INTEGERATIONS
+---   GIT
 
-local git_blame_condition = function()
+local git_blame = require("gitblame")
+
+local has_git_blame = function()
 	local filetype = vim.bo.filetype;
 	return git_blame.is_blame_text_available() and
 	filetype ~= "neo-tree" and
@@ -12,7 +14,7 @@ local git_blame_condition = function()
 	filetype ~= "NeogitStatus"
 end
 
-local git_blame_getter = function()
+local get_git_blame = function()
 	local blame_text = git_blame.get_current_blame_text()
 
 	if string.len(blame_text) > 65 then
@@ -21,6 +23,10 @@ local git_blame_getter = function()
 
 	return blame_text
 end
+
+---   NAVIC
+
+local navic = require("nvim-navic")
 
 local keep_scope = function(scope)
 	return scope.type == "Method" or
@@ -42,19 +48,27 @@ local get_scope = function()
 	return scope_text
 end
 
+----- SETUP
+
+local custom_catppuccin = require("lualine.themes.catppuccin")
+custom_catppuccin.normal.a.bg = "#8565C4"
+custom_catppuccin.normal.b.fg = "#C0AEE0"
+custom_catppuccin.normal.c.bg = "#020210"
+
 require("lualine").setup {
 	options = {
+		theme = custom_catppuccin,
 		component_separators = "",
 		section_separators = "",
 		globalstatus = true
 	},
 	sections = {
-		lualine_a = {{ "mode", color = { fg = "eeeeee" } }},
+		lualine_a = {{ "mode", color = { fg = "FFFFFF" } }},
 		lualine_b = {{ "branch", separator = { left = "", right = "" } }},
-		lualine_c = { "filename", { "", separator = { left = "", right = "" }, color = { bg = "FF6D6A" }, draw_empty = true }, { "", separator = { left = "", right = "" }, color = { bg = "B1A2CA" }, draw_empty = true }, { "", separator = { left = "", right = "" }, color = { bg = "8BD3E6" }, draw_empty = true }, { get_scope, cond = navic.is_available, separator = { left = "", right = "" }, color = { fg = "000000", bg = "ffffff" } }, "diff", "diagnostics" },
-		lualine_x = {{ git_blame_getter, cond = git_blame_condition }, "encoding" },
+		lualine_c = { "filename", { "", separator = { left = "", right = "" }, color = { bg = "8565C4" }, draw_empty = true }, { "", separator = { left = "", right = "" }, color = { bg = "A28AD2" }, draw_empty = true }, { "", separator = { left = "", right = "" }, color = { bg = "C0AEE0" }, draw_empty = true }, { get_scope, cond = navic.is_available, separator = { left = "", right = "" }, color = { fg = "000000", bg = "ffffff" } }, "diff", "diagnostics" },
+		lualine_x = {{ get_git_blame, cond = has_git_blame }, "encoding" },
 		lualine_y = { },
-		lualine_z = {{ "location", separator = { left = "" }, color = { fg = "eeeeee" } }, { "progress", color = { fg = "eeeeee" } }}
+		lualine_z = {{ "location", separator = { left = "" }, color = { fg = "FFFFFF" } }, { "progress", color = { fg = "FFFFFF" } }}
 	},
 }
 

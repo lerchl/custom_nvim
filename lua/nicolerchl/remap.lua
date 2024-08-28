@@ -13,6 +13,7 @@ vim.keymap.set("n", "<C-Right>", "<C-w>l")
 
 -- create and close splits
 vim.keymap.set("n", "<C-S-Right>", "<C-w>v<C-w>p")
+vim.keymap.set("n", "<C-S-Down>", "<C-w>s")
 vim.keymap.set("n", "<C-S-Left>", "<C-w>q")
 
 -- tabs

@@ -6,7 +6,6 @@ lsp_zero.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, { buffer = bufnr, desc = "Go to definition" })
 	vim.keymap.set("n", "<leader>gi", function() vim.lsp.buf.implementation() end, { buffer = bufnr, desc = "Go to implementation" })
 	vim.keymap.set("n", "<leader>gt", function() vim.lsp.buf.type_definition() end, { buffer = bufnr, desc = "Go to type definition" })
-	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { buffer = bufnr, desc = "Hover" })
 	vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, { buffer = bufnr, desc = "View workspace symbol" })
 	vim.keymap.set("n", "<leader>vdd", function() vim.diagnostic.open_float() end, { buffer = bufnr, desc = "View diagnostic" })
 	vim.keymap.set("n", "<leader>vdn", function() vim.diagnostic.goto_next() end, { buffer = bufnr, desc = "View next diagnostic" })
@@ -32,7 +31,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-	ensure_installed = { 'lua_ls', "clangd", "jdtls",'rust_analyzer', "tsserver", "eslint" },
+	ensure_installed = { 'lua_ls', "clangd", "jdtls",'rust_analyzer', "tsserver" },
 	handlers = {
 		lsp_zero.default_setup,
 		jdtls = lsp_zero.noop,
@@ -60,8 +59,8 @@ cmp.setup({
 		["<S-Tab>"] = cmp.mapping.close()
 	}),
 	window = {
-		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
+		completion = cmp.config.window.bordered(),
 	},
 	formatting = {
 		-- changing the order of fields so the icon is the first
@@ -73,7 +72,7 @@ cmp.setup({
 				nvim_lsp = 'λ',
 				luasnip = '⋗',
 				buffer = 'Ω',
-				path = '🖫',
+				path = '/',
 				nvim_lua = 'Π',
 			}
 
