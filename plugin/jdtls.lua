@@ -278,9 +278,3 @@ vim.api.nvim_create_autocmd('FileType', {
 	desc = 'Setup jdtls',
 	callback = jdtls_setup,
 })
-
-vim.lsp.handlers = {
-   ['language/status'] = function(_, result)
-	   -- noop
-   end,
-}

@@ -19,4 +19,3 @@ vim.opt.fixendofline = false
 vim.opt.wrap = false
 
 vim.api.nvim_set_option("clipboard", "unnamed")
-

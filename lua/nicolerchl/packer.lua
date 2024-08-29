@@ -32,8 +32,6 @@ return require('packer').startup(function(use)
 
 	use "folke/which-key.nvim"
 
-	use "lewis6991/hover.nvim"
-
 	use "sindrets/diffview.nvim"
 
 	use {
