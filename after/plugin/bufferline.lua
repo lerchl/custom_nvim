@@ -109,21 +109,6 @@ bufferline.setup {
 			fg = '#eeeeee',  -- Text color for trunc marker
 			bg = '#020210',  -- Match with bufferline background
 		},
-
-		-- Additional highlight groups for previously ignored sections
-		diagnostic = {
-			fg = '#eeeeee',  -- Keep the text color
-			bg = '#020210',  -- Set background color
-		},
-		diagnostic_visible = {
-			fg = '#eeeeee',  -- Keep the text color
-			bg = '#020210',  -- Set background color
-		},
-		diagnostic_selected = {
-			fg = '#eeeeee',  -- Keep the text color
-			bg = '#8565C4',  -- Set background color to match selected buffer
-			bold = true,
-		},
 		modified = {
 			fg = '#eeeeee',  -- Keep the text color
 			bg = '#020210',  -- Set background color
@@ -147,6 +132,123 @@ bufferline.setup {
 		duplicate = {
 			fg = '#eeeeee',  -- Keep the text color
 			bg = '#020210',  -- Set background color
+		},
+		diagnostic = {
+			fg = '#eeeeee',  -- Keep the text color
+			bg = '#020210',  -- Set background color
+		},
+		diagnostic_visible = {
+			fg = '#eeeeee',  -- Keep the text color
+			bg = '#020210',  -- Set background color
+		},
+		diagnostic_selected = {
+			fg = '#eeeeee',  -- Keep the text color
+			bg = '#8565C4',  -- Set background color to match selected buffer
+			bold = true,
+		},
+		hint = {
+			fg = '#a8cc8c',  -- Example color for hints (you can adjust)
+			bg = '#020210',  -- Set background color
+		},
+		hint_visible = {
+			fg = '#a8cc8c',  -- Example color for visible hints
+			bg = '#020210',  -- Set background color
+		},
+		hint_selected = {
+			fg = '#a8cc8c',  -- Example color for selected hints
+			bg = '#8565C4',  -- Set background color to match selected buffer
+			bold = true,
+		},
+		hint_diagnostic = {
+			fg = '#a8cc8c',  -- Example color for diagnostic hints
+			bg = '#020210',  -- Set background color
+		},
+		hint_diagnostic_visible = {
+			fg = '#a8cc8c',  -- Example color for visible diagnostic hints
+			bg = '#020210',  -- Set background color
+		},
+		hint_diagnostic_selected = {
+			fg = '#a8cc8c',  -- Example color for selected diagnostic hints
+			bg = '#8565C4',  -- Set background color to match selected buffer
+			bold = true,
+		},
+		info = {
+			fg = '#7ca4c0',  -- Example color for info (you can adjust)
+			bg = '#020210',  -- Set background color
+		},
+		info_visible = {
+			fg = '#7ca4c0',  -- Example color for visible info
+			bg = '#020210',  -- Set background color
+		},
+		info_selected = {
+			fg = '#7ca4c0',  -- Example color for selected info
+			bg = '#8565C4',  -- Set background color to match selected buffer
+			bold = true,
+		},
+		info_diagnostic = {
+			fg = '#7ca4c0',  -- Example color for diagnostic info
+			bg = '#020210',  -- Set background color
+		},
+		info_diagnostic_visible = {
+			fg = '#7ca4c0',  -- Example color for visible diagnostic info
+			bg = '#020210',  -- Set background color
+		},
+		info_diagnostic_selected = {
+			fg = '#7ca4c0',  -- Example color for selected diagnostic info
+			bg = '#8565C4',  -- Set background color to match selected buffer
+			bold = true,
+		},
+		warning = {
+			fg = '#d8a657',  -- Example color for warnings (you can adjust)
+			bg = '#020210',  -- Set background color
+		},
+		warning_visible = {
+			fg = '#d8a657',  -- Example color for visible warnings
+			bg = '#020210',  -- Set background color
+		},
+		warning_selected = {
+			fg = '#d8a657',  -- Example color for selected warnings
+			bg = '#8565C4',  -- Set background color to match selected buffer
+			bold = true,
+		},
+		warning_diagnostic = {
+			fg = '#d8a657',  -- Example color for diagnostic warnings
+			bg = '#020210',  -- Set background color
+		},
+		warning_diagnostic_visible = {
+			fg = '#d8a657',  -- Example color for visible diagnostic warnings
+			bg = '#020210',  -- Set background color
+		},
+		warning_diagnostic_selected = {
+			fg = '#d8a657',  -- Example color for selected diagnostic warnings
+			bg = '#8565C4',  -- Set background color to match selected buffer
+			bold = true,
+		},
+		error = {
+			fg = '#ec6a88',  -- Example color for errors (you can adjust)
+			bg = '#020210',  -- Set background color
+		},
+		error_visible = {
+			fg = '#ec6a88',  -- Example color for visible errors
+			bg = '#020210',  -- Set background color
+		},
+		error_selected = {
+			fg = '#ec6a88',  -- Example color for selected errors
+			bg = '#8565C4',  -- Set background color to match selected buffer
+			bold = true,
+		},
+		error_diagnostic = {
+			fg = '#ec6a88',  -- Example color for diagnostic errors
+			bg = '#020210',  -- Set background color
+		},
+		error_diagnostic_visible = {
+			fg = '#ec6a88',  -- Example color for visible diagnostic errors
+			bg = '#020210',  -- Set background color
+		},
+		error_diagnostic_selected = {
+			fg = '#ec6a88',  -- Example color for selected diagnostic errors
+			bg = '#8565C4',  -- Set background color to match selected buffer
+			bold = true,
 		}
 	}
 }
