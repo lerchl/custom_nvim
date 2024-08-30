@@ -65,7 +65,11 @@ require("catppuccin").setup {
 		return {
 			WinSeparator = { fg = "#8565C4" },
 			FloatBorder = { fg = "#8565C4" },
-			VertSplit = { fg = "#8565C4" }
+			VertSplit = { fg = "#8565C4" },
+			NeoTreeTitleBar = { fg = "#EEEEEE", bg = "#8565C4" },
+			NeoTreeRootName = { fg = "#8565C4" },
+			NeoTreeDirectoryName = { fg = "#8565C4" },
+			NeoTreeDirectoryIcon = { fg = "#8565C4" },
 		}
 	end
 }
