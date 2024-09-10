@@ -51,25 +51,28 @@
 -- }
 
 -- CATPUCCIN
+local main = "#6a5acd"
+local base = "#000000"
+
 require("catppuccin").setup {
 	flavour = "mocha",
 	no_italic = true,
 	color_overrides = {
 		mocha = {
-			base = "#020210",
-			mantle = "#020210",
-			crust = "#020210",
+			base = base,
+			mantle = base,
+			crust = base,
 		},
 	},
 	custom_highlights = function (C)
 		return {
-			WinSeparator = { fg = "#8565C4" },
-			FloatBorder = { fg = "#8565C4" },
-			VertSplit = { fg = "#8565C4" },
-			NeoTreeTitleBar = { fg = "#EEEEEE", bg = "#8565C4" },
-			NeoTreeRootName = { fg = "#8565C4" },
-			NeoTreeDirectoryName = { fg = "#8565C4" },
-			NeoTreeDirectoryIcon = { fg = "#8565C4" },
+			WinSeparator = { fg = main },
+			FloatBorder = { fg = main },
+			VertSplit = { fg = main },
+			NeoTreeTitleBar = { fg = "#EEEEEE", bg = main },
+			NeoTreeRootName = { fg = main },
+			NeoTreeDirectoryName = { fg = main },
+			NeoTreeDirectoryIcon = { fg = main },
 		}
 	end
 }

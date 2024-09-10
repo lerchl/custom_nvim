@@ -50,10 +50,20 @@ end
 
 ----- SETUP
 
+local main = "#6a5acd"
+local base = "#000000"
+local white = "#ffffff"
+
 local custom_catppuccin = require("lualine.themes.catppuccin")
-custom_catppuccin.normal.a.bg = "#8565C4"
-custom_catppuccin.normal.b.fg = "#C0AEE0"
-custom_catppuccin.normal.c.bg = "#020210"
+custom_catppuccin.normal.a.bg = main
+custom_catppuccin.normal.b.bg = white
+custom_catppuccin.insert.b.bg = white
+custom_catppuccin.visual.b.bg = white
+custom_catppuccin.replace.b.bg = white
+custom_catppuccin.command.b.bg = white
+custom_catppuccin.inactive.b.bg = white
+custom_catppuccin.normal.b.fg = main
+custom_catppuccin.normal.c.bg = base
 
 require("lualine").setup {
 	options = {
@@ -65,10 +75,10 @@ require("lualine").setup {
 	sections = {
 		lualine_a = {{ "mode", color = { fg = "FFFFFF" } }},
 		lualine_b = {{ "branch", separator = { left = "", right = "" } }},
-		lualine_c = { "filename", { "", separator = { left = "", right = "" }, color = { bg = "8565C4" }, draw_empty = true }, { "", separator = { left = "", right = "" }, color = { bg = "A28AD2" }, draw_empty = true }, { "", separator = { left = "", right = "" }, color = { bg = "C0AEE0" }, draw_empty = true }, { get_scope, cond = navic.is_available, separator = { left = "", right = "" }, color = { fg = "000000", bg = "ffffff" } }, "diff", "diagnostics" },
+		lualine_c = { "filename", { "", separator = { left = "", right = "" }, color = { bg = "6a5acd" }, draw_empty = true }, { "", separator = { left = "", right = "" }, color = { bg = "8e84cc" }, draw_empty = true }, { "", separator = { left = "", right = "" }, color = { bg = "a8a3cc" }, draw_empty = true }, { get_scope, cond = navic.is_available, separator = { left = "", right = "" }, color = { fg = "000000", bg = "ffffff" } }, "diff", "diagnostics" },
 		lualine_x = {{ get_git_blame, cond = has_git_blame }, "encoding" },
 		lualine_y = { },
-		lualine_z = {{ "location", separator = { left = "" }, color = { fg = "FFFFFF" } }, { "progress", color = { fg = "FFFFFF" } }}
+		lualine_z = {{ "location", separator = { left = "" }, color = { fg = "ffffff" } }, { "progress", color = { fg = "ffffff" } }}
 	},
 }
 

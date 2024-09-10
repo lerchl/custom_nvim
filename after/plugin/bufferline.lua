@@ -1,5 +1,13 @@
 local bufferline = require("bufferline")
 
+local main = "#6a5acd"
+local base = "#000000"
+local white = "#ffffff"
+local info = "#66bcf9"
+local warning = "#fce879"
+local error = "#fc7e80"
+local hint = "#a8cc8c"
+
 bufferline.setup {
 	options = {
 		numbers = "ordinal",
@@ -8,246 +16,246 @@ bufferline.setup {
 	},
 	highlights = {
 		fill = {
-			fg = '#eeeeee',  -- Text color
-			bg = '#020210',  -- Background color for the bufferline
+			fg = white,  -- Text color
+			bg = base,  -- Background color for the bufferline
 		},
 		background = {
-			fg = '#eeeeee',  -- Text color for non-selected buffers
-			bg = '#020210',  -- Background color for non-selected buffers
+			fg = white,  -- Text color for non-selected buffers
+			bg = base,  -- Background color for non-selected buffers
 		},
 		tab = {
-			fg = '#eeeeee',  -- Text color for non-selected tabs
-			bg = '#020210',  -- Background color for non-selected tabs
+			fg = white,  -- Text color for non-selected tabs
+			bg = base,  -- Background color for non-selected tabs
 		},
 		tab_selected = {
-			fg = '#eeeeee',  -- Text color for selected tabs
-			bg = '#8565C4',  -- Background color for selected tabs
+			fg = white,  -- Text color for selected tabs
+			bg = main,  -- Background color for selected tabs
 		},
 		tab_separator = {
-			fg = '#020210',   -- Match with the bufferline background
-			bg = '#020210',   -- Match with the bufferline background
+			fg = base,   -- Match with the bufferline background
+			bg = base,   -- Match with the bufferline background
 		},
 		tab_separator_selected = {
-			fg = '#8565C4',   -- Match with selected buffer background
-			bg = '#8565C4',   -- Match with selected buffer background
+			fg = main,   -- Match with selected buffer background
+			bg = main,   -- Match with selected buffer background
 		},
 		buffer_visible = {
-			fg = '#eeeeee',  -- Text color for visible but non-selected buffer
-			bg = '#020210',  -- Match with bufferline background
+			fg = white,  -- Text color for visible but non-selected buffer
+			bg = base,  -- Match with bufferline background
 		},
 		buffer_selected = {
-			fg = '#eeeeee',  -- Text color for selected buffer
-			bg = '#8565C4',  -- Background color for selected buffer
+			fg = white,  -- Text color for selected buffer
+			bg = main,  -- Background color for selected buffer
 			bold = true,
 		},
 		numbers = {
-			fg = '#eeeeee',  -- Text color for buffer numbers
-			bg = '#020210',  -- Match with bufferline background
+			fg = white,  -- Text color for buffer numbers
+			bg = base,  -- Match with bufferline background
 		},
 		numbers_visible = {
-			fg = '#eeeeee',  -- Text color for visible buffer numbers
-			bg = '#020210',  -- Match with bufferline background
+			fg = white,  -- Text color for visible buffer numbers
+			bg = base,  -- Match with bufferline background
 		},
 		numbers_selected = {
-			fg = '#eeeeee',  -- Text color for selected buffer numbers
-			bg = '#8565C4',  -- Match with selected buffer background
+			fg = white,  -- Text color for selected buffer numbers
+			bg = main,  -- Match with selected buffer background
 			bold = true,
 		},
 		separator_selected = {
-			fg = '#8565C4',  -- Match with selected buffer background
-			bg = '#8565C4',  -- Match with selected buffer background
+			fg = main,  -- Match with selected buffer background
+			bg = main,  -- Match with selected buffer background
 		},
 		separator_visible = {
-			fg = '#020210',  -- Match with bufferline background
-			bg = '#020210',  -- Match with bufferline background
+			fg = base,  -- Match with bufferline background
+			bg = base,  -- Match with bufferline background
 		},
 		separator = {
-			fg = '#020210',  -- Match with bufferline background
-			bg = '#020210',  -- Match with bufferline background
+			fg = base,  -- Match with bufferline background
+			bg = base,  -- Match with bufferline background
 		},
 		indicator_visible = {
-			fg = '#020210',  -- Match with bufferline background
-			bg = '#020210',  -- Match with bufferline background
+			fg = base,  -- Match with bufferline background
+			bg = base,  -- Match with bufferline background
 		},
 		indicator_selected = {
-			fg = '#eeeeee',  -- Text color for selected buffer indicator
-			bg = '#8565C4',  -- Match with selected buffer background
+			fg = white,  -- Text color for selected buffer indicator
+			bg = main,  -- Match with selected buffer background
 		},
 		close_button = {
-			fg = '#eeeeee',  -- Text color for close button
-			bg = '#020210',  -- Match with bufferline background
+			fg = white,  -- Text color for close button
+			bg = base,  -- Match with bufferline background
 		},
 		close_button_visible = {
-			fg = '#eeeeee',  -- Text color for visible close button
-			bg = '#020210',  -- Match with bufferline background
+			fg = white,  -- Text color for visible close button
+			bg = base,  -- Match with bufferline background
 		},
 		close_button_selected = {
-			fg = '#eeeeee',  -- Text color for selected close button
-			bg = '#8565C4',  -- Match with selected buffer background
+			fg = white,  -- Text color for selected close button
+			bg = main,  -- Match with selected buffer background
 			bold = true,
 		},
 		pick_selected = {
-			fg = '#eeeeee',  -- Text color for selected pick
-			bg = '#8565C4',  -- Match with selected buffer background
+			fg = white,  -- Text color for selected pick
+			bg = main,  -- Match with selected buffer background
 			bold = true,
 		},
 		pick_visible = {
-			fg = '#eeeeee',  -- Text color for visible pick
-			bg = '#020210',  -- Match with bufferline background
+			fg = white,  -- Text color for visible pick
+			bg = base,  -- Match with bufferline background
 			bold = true,
 		},
 		pick = {
-			fg = '#eeeeee',  -- Text color for pick
-			bg = '#020210',  -- Match with bufferline background
+			fg = white,  -- Text color for pick
+			bg = base,  -- Match with bufferline background
 			bold = true,
 		},
 		offset_separator = {
-			fg = '#020210',  -- Match with bufferline background
-			bg = '#020210',  -- Match with bufferline background
+			fg = base,  -- Match with bufferline background
+			bg = base,  -- Match with bufferline background
 		},
 		trunc_marker = {
-			fg = '#eeeeee',  -- Text color for trunc marker
-			bg = '#020210',  -- Match with bufferline background
+			fg = white,  -- Text color for trunc marker
+			bg = base,  -- Match with bufferline background
 		},
 		modified = {
-			fg = '#eeeeee',  -- Keep the text color
-			bg = '#020210',  -- Set background color
+			fg = white,  -- Keep the text color
+			bg = base,  -- Set background color
 		},
 		modified_visible = {
-			fg = '#eeeeee',  -- Keep the text color
-			bg = '#020210',  -- Set background color
+			fg = white,  -- Keep the text color
+			bg = base,  -- Set background color
 		},
 		modified_selected = {
-			fg = '#eeeeee',  -- Keep the text color
-			bg = '#8565C4',  -- Set background color to match selected buffer
+			fg = white,  -- Keep the text color
+			bg = main,  -- Set background color to match selected buffer
 		},
 		duplicate_selected = {
-			fg = '#eeeeee',  -- Keep the text color
-			bg = '#8565C4',  -- Set background color to match selected buffer
+			fg = white,  -- Keep the text color
+			bg = main,  -- Set background color to match selected buffer
 		},
 		duplicate_visible = {
-			fg = '#eeeeee',  -- Keep the text color
-			bg = '#020210',  -- Set background color
+			fg = white,  -- Keep the text color
+			bg = base,  -- Set background color
 		},
 		duplicate = {
-			fg = '#eeeeee',  -- Keep the text color
-			bg = '#020210',  -- Set background color
+			fg = white,  -- Keep the text color
+			bg = base,  -- Set background color
 		},
 		diagnostic = {
-			fg = '#eeeeee',  -- Keep the text color
-			bg = '#020210',  -- Set background color
+			fg = white,  -- Keep the text color
+			bg = base,  -- Set background color
 		},
 		diagnostic_visible = {
-			fg = '#eeeeee',  -- Keep the text color
-			bg = '#020210',  -- Set background color
+			fg = white,  -- Keep the text color
+			bg = base,  -- Set background color
 		},
 		diagnostic_selected = {
-			fg = '#eeeeee',  -- Keep the text color
-			bg = '#8565C4',  -- Set background color to match selected buffer
+			fg = white,  -- Keep the text color
+			bg = main,  -- Set background color to match selected buffer
 			bold = true,
 		},
 		hint = {
-			fg = '#a8cc8c',  -- Example color for hints (you can adjust)
-			bg = '#020210',  -- Set background color
+			fg = hint,  -- Example color for hints (you can adjust)
+			bg = base,  -- Set background color
 		},
 		hint_visible = {
-			fg = '#a8cc8c',  -- Example color for visible hints
-			bg = '#020210',  -- Set background color
+			fg = hint,  -- Example color for visible hints
+			bg = base,  -- Set background color
 		},
 		hint_selected = {
-			fg = '#a8cc8c',  -- Example color for selected hints
-			bg = '#8565C4',  -- Set background color to match selected buffer
+			fg = hint,  -- Example color for selected hints
+			bg = main,  -- Set background color to match selected buffer
 			bold = true,
 		},
 		hint_diagnostic = {
-			fg = '#a8cc8c',  -- Example color for diagnostic hints
-			bg = '#020210',  -- Set background color
+			fg = hint,  -- Example color for diagnostic hints
+			bg = base,  -- Set background color
 		},
 		hint_diagnostic_visible = {
-			fg = '#a8cc8c',  -- Example color for visible diagnostic hints
-			bg = '#020210',  -- Set background color
+			fg = hint,  -- Example color for visible diagnostic hints
+			bg = base,  -- Set background color
 		},
 		hint_diagnostic_selected = {
-			fg = '#a8cc8c',  -- Example color for selected diagnostic hints
-			bg = '#8565C4',  -- Set background color to match selected buffer
+			fg = hint,  -- Example color for selected diagnostic hints
+			bg = main,  -- Set background color to match selected buffer
 			bold = true,
 		},
 		info = {
-			fg = '#7ca4c0',  -- Example color for info (you can adjust)
-			bg = '#020210',  -- Set background color
+			fg = info,  -- Example color for info (you can adjust)
+			bg = base,  -- Set background color
 		},
 		info_visible = {
-			fg = '#7ca4c0',  -- Example color for visible info
-			bg = '#020210',  -- Set background color
+			fg = info,  -- Example color for visible info
+			bg = base,  -- Set background color
 		},
 		info_selected = {
-			fg = '#7ca4c0',  -- Example color for selected info
-			bg = '#8565C4',  -- Set background color to match selected buffer
+			fg = info,  -- Example color for selected info
+			bg = main,  -- Set background color to match selected buffer
 			bold = true,
 		},
 		info_diagnostic = {
-			fg = '#7ca4c0',  -- Example color for diagnostic info
-			bg = '#020210',  -- Set background color
+			fg = info,  -- Example color for diagnostic info
+			bg = base,  -- Set background color
 		},
 		info_diagnostic_visible = {
-			fg = '#7ca4c0',  -- Example color for visible diagnostic info
-			bg = '#020210',  -- Set background color
+			fg = info,  -- Example color for visible diagnostic info
+			bg = base,  -- Set background color
 		},
 		info_diagnostic_selected = {
-			fg = '#7ca4c0',  -- Example color for selected diagnostic info
-			bg = '#8565C4',  -- Set background color to match selected buffer
+			fg = info,  -- Example color for selected diagnostic info
+			bg = main,  -- Set background color to match selected buffer
 			bold = true,
 		},
 		warning = {
-			fg = '#d8a657',  -- Example color for warnings (you can adjust)
-			bg = '#020210',  -- Set background color
+			fg = warning,  -- Example color for warnings (you can adjust)
+			bg = base,  -- Set background color
 		},
 		warning_visible = {
-			fg = '#d8a657',  -- Example color for visible warnings
-			bg = '#020210',  -- Set background color
+			fg = warning,  -- Example color for visible warnings
+			bg = base,  -- Set background color
 		},
 		warning_selected = {
-			fg = '#d8a657',  -- Example color for selected warnings
-			bg = '#8565C4',  -- Set background color to match selected buffer
+			fg = warning,  -- Example color for selected warnings
+			bg = main,  -- Set background color to match selected buffer
 			bold = true,
 		},
 		warning_diagnostic = {
-			fg = '#d8a657',  -- Example color for diagnostic warnings
-			bg = '#020210',  -- Set background color
+			fg = warning,  -- Example color for diagnostic warnings
+			bg = base,  -- Set background color
 		},
 		warning_diagnostic_visible = {
-			fg = '#d8a657',  -- Example color for visible diagnostic warnings
-			bg = '#020210',  -- Set background color
+			fg = warning,  -- Example color for visible diagnostic warnings
+			bg = base,  -- Set background color
 		},
 		warning_diagnostic_selected = {
-			fg = '#d8a657',  -- Example color for selected diagnostic warnings
-			bg = '#8565C4',  -- Set background color to match selected buffer
+			fg = warning,  -- Example color for selected diagnostic warnings
+			bg = main,  -- Set background color to match selected buffer
 			bold = true,
 		},
 		error = {
-			fg = '#ec6a88',  -- Example color for errors (you can adjust)
-			bg = '#020210',  -- Set background color
+			fg = error,  -- Example color for errors (you can adjust)
+			bg = base,  -- Set background color
 		},
 		error_visible = {
-			fg = '#ec6a88',  -- Example color for visible errors
-			bg = '#020210',  -- Set background color
+			fg = error,  -- Example color for visible errors
+			bg = base,  -- Set background color
 		},
 		error_selected = {
-			fg = '#ec6a88',  -- Example color for selected errors
-			bg = '#8565C4',  -- Set background color to match selected buffer
+			fg = error,  -- Example color for selected errors
+			bg = main,  -- Set background color to match selected buffer
 			bold = true,
 		},
 		error_diagnostic = {
-			fg = '#ec6a88',  -- Example color for diagnostic errors
-			bg = '#020210',  -- Set background color
+			fg = error,  -- Example color for diagnostic errors
+			bg = base,  -- Set background color
 		},
 		error_diagnostic_visible = {
-			fg = '#ec6a88',  -- Example color for visible diagnostic errors
-			bg = '#020210',  -- Set background color
+			fg = error,  -- Example color for visible diagnostic errors
+			bg = base,  -- Set background color
 		},
 		error_diagnostic_selected = {
-			fg = '#ec6a88',  -- Example color for selected diagnostic errors
-			bg = '#8565C4',  -- Set background color to match selected buffer
+			fg = error,  -- Example color for selected diagnostic errors
+			bg = main,  -- Set background color to match selected buffer
 			bold = true,
 		}
 	}
