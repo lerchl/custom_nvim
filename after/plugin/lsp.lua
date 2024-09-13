@@ -15,20 +15,37 @@ lsp_zero.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, { buffer = bufnr, desc = "Rename" })
 	vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, { buffer = bufnr, desc = "Signature help" })
 
+	vim.keymap.set("n", "<leader>vi", vim.lsp.buf.incoming_calls, { buffer = bufnr, desc = "Show incoming calls" })
+	vim.keymap.set("n", "<leader>vo", vim.lsp.buf.outgoing_calls, { buffer = bufnr, desc = "Show outgoing calls" })
+	-- vim.keymap.set("n", "<leader>vt", vim.lsp.buf.typehierarchy, { buffer = bufnr, desc = "Show type hierarchy" })
+
 	if client.server_capabilities.documentSymbolProvider then
 		require('nvim-navic').attach(client, bufnr)
 		require("nvim-navbuddy").attach(client, bufnr)
 	end
 end)
 
--- vim.lsp.buf.incoming_calls()
--- vim.lsp.buf.outgoing_calls()
+-- Function to highlight document references
+local function lsp_document_highlight()
+	vim.lsp.buf.document_highlight()
+end
 
--- autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
--- autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
--- autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+-- Function to clear document highlights
+local function lsp_clear_references()
+	vim.lsp.buf.clear_references()
+end
 
--- vim.lsp.buf.typehierarchy()
+-- Create the autocmd for CursorHold to highlight references
+vim.api.nvim_create_autocmd("CursorHold", {
+	callback = lsp_document_highlight,
+	group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true }),
+})
+
+-- Create the autocmd for CursorMoved to clear the highlights
+vim.api.nvim_create_autocmd("CursorMoved", {
+	callback = lsp_clear_references,
+	group = vim.api.nvim_create_augroup("LspClearReferences", { clear = true }),
+})
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
