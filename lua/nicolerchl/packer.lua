@@ -55,6 +55,8 @@ return require('packer').startup(function(use)
 		requires = {{ 'nvim-lua/plenary.nvim' }}
 	}
 
+	use "folke/trouble.nvim"
+
 	use "lukas-reineke/indent-blankline.nvim"
 
 	use "terrortylor/nvim-comment"
