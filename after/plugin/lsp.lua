@@ -23,33 +23,35 @@ lsp_zero.on_attach(function(client, bufnr)
 		require('nvim-navic').attach(client, bufnr)
 		require("nvim-navbuddy").attach(client, bufnr)
 	end
+
+	if client.server_capabilities.documentHighlightProvider then
+		-- Function to highlight document references
+		local function lsp_document_highlight()
+			vim.lsp.buf.document_highlight()
+		end
+
+		-- Function to clear document highlights
+		local function lsp_clear_references()
+			vim.lsp.buf.clear_references()
+		end
+
+		-- Create the autocmd for CursorHold to highlight references
+		vim.api.nvim_create_autocmd("CursorHold", {
+			callback = lsp_document_highlight,
+			group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true }),
+		})
+
+		-- Create the autocmd for CursorMoved to clear the highlights
+		vim.api.nvim_create_autocmd("CursorMoved", {
+			callback = lsp_clear_references,
+			group = vim.api.nvim_create_augroup("LspClearReferences", { clear = true }),
+		})
+	end
 end)
-
--- Function to highlight document references
-local function lsp_document_highlight()
-	vim.lsp.buf.document_highlight()
-end
-
--- Function to clear document highlights
-local function lsp_clear_references()
-	vim.lsp.buf.clear_references()
-end
-
--- Create the autocmd for CursorHold to highlight references
-vim.api.nvim_create_autocmd("CursorHold", {
-	callback = lsp_document_highlight,
-	group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true }),
-})
-
--- Create the autocmd for CursorMoved to clear the highlights
-vim.api.nvim_create_autocmd("CursorMoved", {
-	callback = lsp_clear_references,
-	group = vim.api.nvim_create_augroup("LspClearReferences", { clear = true }),
-})
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-	ensure_installed = { 'lua_ls', "clangd", "jdtls",'rust_analyzer', "tsserver" },
+	ensure_installed = { 'lua_ls', "clangd", "jdtls",'rust_analyzer', "ts_ls" },
 	handlers = {
 		lsp_zero.default_setup,
 		jdtls = lsp_zero.noop,
