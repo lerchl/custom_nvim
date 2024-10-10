@@ -123,5 +123,8 @@ return require('packer').startup(function(use)
 
 	use "mfussenegger/nvim-dap"
 	use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
+
+	use { "m4xshen/hardtime.nvim", requires = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" }}
+	use { "ggandor/leap.nvim", requires = { "tpope/vim-repeat" }}
 end)
 

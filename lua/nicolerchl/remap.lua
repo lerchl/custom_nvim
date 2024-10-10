@@ -16,6 +16,14 @@ vim.keymap.set("n", "<C-S-Right>", "<C-w>v<C-w>p")
 vim.keymap.set("n", "<C-S-Down>", "<C-w>s")
 vim.keymap.set("n", "<C-S-Left>", "<C-w>q")
 
+-- Resize window horizontally with Shift + arrow keys
+vim.keymap.set('n', '<S-Right>', ':vertical resize -2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<S-Left>', ':vertical resize +2<CR>', { noremap = true, silent = true })
+
+-- Resize window vertically with Shift + arrow keys
+vim.keymap.set('n', '<S-Up>', ':resize +2<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<S-Down>', ':resize -2<CR>', { noremap = true, silent = true })
+
 -- tabs
 for i = 1, 9 do
 	vim.keymap.set(
