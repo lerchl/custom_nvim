@@ -2,8 +2,13 @@ require("neo-tree").setup {
 	enable_git_status = false,
 	filesystem = {
 		group_empty_dirs = true,
-		use_libuv_file_watcher = true
+		use_libuv_file_watcher = true,
 	},
+	-- buffers = {
+	-- 	follow_current_file = {
+	-- 		enabled = true
+	-- 	}
+	-- },
 	window = {
 		position = "float"
 	}
@@ -25,5 +30,5 @@ local show_current_file = function()
 	require('neo-tree.command').execute({ reveal_file = reveal_file, toggle = true })
 end
 
-vim.keymap.set('n', '-', show_current_file, { desc = "Show current file in neotree" });
+vim.keymap.set('n', '-', show_current_file, { noremap = true, desc = "Show current file in neotree" });
 
