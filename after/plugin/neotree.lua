@@ -30,5 +30,5 @@ local show_current_file = function()
 	require('neo-tree.command').execute({ reveal_file = reveal_file, toggle = true })
 end
 
-vim.keymap.set('n', '-', show_current_file, { noremap = true, desc = "Show current file in neotree" });
+vim.keymap.set('n', '<leader>e', show_current_file, { noremap = true, desc = "Show current file in neotree" });
 

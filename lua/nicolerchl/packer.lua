@@ -1,79 +1,19 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function(use)
+return require("packer").startup(function(use)
 	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
+	use "wbthomason/packer.nvim"
 
-	use {
-		'goolord/alpha-nvim',
-		config = function ()
-			require'alpha'.setup(require'alpha.themes.dashboard'.config)
-		end
-	}
+	-- UI
+	use "goolord/alpha-nvim"
 
-	use { "folke/noice.nvim", dependencies = {
-			"MunifTanjim/nui.nvim",
-			-- OPTIONAL:
-			--   `nvim-notify` is only needed, if you want to use the notification view.
-			--   If not available, we use `mini` as the fallback
-			"rcarriga/nvim-notify",
-		}
-	}
+	use { "akinsho/bufferline.nvim", tag = "v4.5.3", requires = "nvim-tree/nvim-web-devicons" }
 
-	use "nvim-tree/nvim-web-devicons"
-
-	-- use "scottmckendry/cyberdream.nvim";
-	-- use "nyoom-engineering/oxocarbon.nvim"
-	-- use "EdenEast/nightfox.nvim"
 	use { "catppuccin/nvim", as = "catppuccin" }
-
-	use "folke/which-key.nvim"
 
 	use "sindrets/diffview.nvim"
 
-	use {
-		"NeogitOrg/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"sindrets/diffview.nvim",
-			"ibhagwan/fzf-lua"
-		}
-	}
-
-	use {
-		'nvim-lualine/lualine.nvim',
-		requires = { 'nvim-tree/nvim-web-devicons' }
-	}
-
-	use "f-person/git-blame.nvim"
-
-	use {
-		'nvim-telescope/telescope.nvim',
-		requires = {{ 'nvim-lua/plenary.nvim' }}
-	}
-
-	use "folke/trouble.nvim"
-
-	use "lukas-reineke/indent-blankline.nvim"
-
-	use "terrortylor/nvim-comment"
-
-	use { 'nvim-treesitter/nvim-treesitter', tag = "v0.9.2", run = ':TSUpdate' }
-	use {
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		after = "nvim-treesitter",
-		requires = "nvim-treesitter/nvim-treesitter",
-	}
-
-	use {
-		"kylechui/nvim-surround",
-		tag = "*"
-	}
-
-	use {'stevearc/dressing.nvim'}
+	use { "nvim-lualine/lualine.nvim", requires = { "nvim-tree/nvim-web-devicons" }}
 
 	use {
 		"nvim-neo-tree/neo-tree.nvim",
@@ -86,25 +26,67 @@ return require('packer').startup(function(use)
 		}
 	}
 
-	use "echasnovski/mini.pairs"
+	use {
+		"folke/noice.nvim",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		}
+	}
 
-	use {'akinsho/bufferline.nvim', tag = "v4.5.3", requires = 'nvim-tree/nvim-web-devicons'}
+	use "lukas-reineke/indent-blankline.nvim"
+
+	use "nvim-tree/nvim-web-devicons"
+
+	--- Nicer inputs and selections
+	use "stevearc/dressing.nvim"
+
+	use "folke/trouble.nvim"
+
+	use "folke/which-key.nvim"
+
+	-- GIT
+
+	use "f-person/git-blame.nvim"
 
 	use {
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim",
+			"ibhagwan/fzf-lua"
+		}
+	}
+
+	-- NAV
+
+	use { "ggandor/leap.nvim", requires = { "tpope/vim-repeat" }}
+
+	use { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" }}
+
+	use { "nvim-treesitter/nvim-treesitter", tag = "v0.9.2", run = ":TSUpdate" }
+	use { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter", requires = "nvim-treesitter/nvim-treesitter" }
+
+	-- LSP / DAP
+
+	use {
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v3.x",
 		requires = {
-			{'neovim/nvim-lspconfig'},
-			{'williamboman/mason.nvim'},
-			{'williamboman/mason-lspconfig.nvim'},
-			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'hrsh7th/cmp-buffer'},
-			{'hrsh7th/cmp-path'},
-			{'saadparwaiz1/cmp_luasnip'},
-			{'hrsh7th/cmp-nvim-lua'},
-			{'L3MON4D3/LuaSnip'},
-			{'rafamadriz/friendly-snippets'}
+			{ "neovim/nvim-lspconfig" },
+			{ "williamboman/mason.nvim" },
+			{ "williamboman/mason-lspconfig.nvim" },
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-path" },
+			{ "saadparwaiz1/cmp_luasnip" },
+			{ "hrsh7th/cmp-nvim-lua" },
+			{ "L3MON4D3/LuaSnip" },
+			{ "rafamadriz/friendly-snippets" }
 		}
 	}
 
@@ -119,12 +101,19 @@ return require('packer').startup(function(use)
 		}
 	}
 
-	use { "mfussenegger/nvim-jdtls", requires = "mfussenegger/nvim-dap" }
 
 	use "mfussenegger/nvim-dap"
-	use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
+	use { "mfussenegger/nvim-jdtls", requires = "mfussenegger/nvim-dap" }
+	use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" }}
+
+	-- MISC
+
+	use "terrortylor/nvim-comment"
 
 	use { "m4xshen/hardtime.nvim", requires = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" }}
-	use { "ggandor/leap.nvim", requires = { "tpope/vim-repeat" }}
+
+	use "echasnovski/mini.pairs"
+
+	use { "kylechui/nvim-surround", tag = "*" }
 end)
 
