@@ -1,5 +1,5 @@
-require("hardtime").setup {
-	restricted_keys = {
-		["-"] = { }
-	}
-}
+-- require("hardtime").setup {
+-- 	restricted_keys = {
+-- 		["-"] = { }
+-- 	}
+-- }

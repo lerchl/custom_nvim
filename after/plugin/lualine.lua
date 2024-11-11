@@ -50,9 +50,10 @@ end
 
 ----- SETUP
 
-local main = "#6a5acd"
-local base = "#000000"
+-- local main = "#6a5acd"
+-- local base = "#000000"
 local white = "#ffffff"
+local main = "#867bc9"
 
 local custom_catppuccin = require("lualine.themes.catppuccin")
 custom_catppuccin.normal.a.bg = main
@@ -63,7 +64,7 @@ custom_catppuccin.replace.b.bg = white
 custom_catppuccin.command.b.bg = white
 custom_catppuccin.inactive.b.bg = white
 custom_catppuccin.normal.b.fg = main
-custom_catppuccin.normal.c.bg = base
+custom_catppuccin.normal.c.bg = "#040404"
 
 require("lualine").setup {
 	options = {

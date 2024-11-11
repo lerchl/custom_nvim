@@ -1,7 +1,9 @@
 local bufferline = require("bufferline")
 
-local main = "#6a5acd"
-local base = "#000000"
+-- local main = "#6a5acd"
+local main = "#867bc9"
+-- local base = "#000000"
+local base = "#040404"
 local white = "#ffffff"
 local info = "#66bcf9"
 local warning = "#fce879"
@@ -274,7 +276,7 @@ vim.keymap.set("n", "<A-Right>", function() bufferline.cycle(1) end, { desc = "N
 vim.keymap.set("n", "<A-Left>", function() bufferline.cycle(-1) end, { desc = "Previous buffer" })
 
 local close_buffer = function()
-	local buffer_count = #vim.fn.getbufinfo({buflisted = 1})
+	local buffer_count = #vim.fn.getbufinfo({ buflisted = 1 })
 
 	if buffer_count > 1 then
 		vim.cmd("bp | bd #")

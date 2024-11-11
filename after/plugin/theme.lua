@@ -51,8 +51,9 @@
 -- }
 
 -- CATPUCCIN
-local main = "#6a5acd"
-local base = "#000000"
+-- local main = "#6a5acd"
+local main = "#867bc9"
+local base = "#070707"
 
 require("catppuccin").setup {
 	flavour = "mocha",
@@ -73,6 +74,7 @@ require("catppuccin").setup {
 			NeoTreeRootName = { fg = main },
 			NeoTreeDirectoryName = { fg = main },
 			NeoTreeDirectoryIcon = { fg = main },
+			LineNr = { fg = "#888888" }
 		}
 	end
 }

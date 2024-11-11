@@ -62,6 +62,7 @@ return require("packer").startup(function(use)
 	}
 
 	-- NAV
+	use "declancm/cinnamon.nvim"
 
 	use { "ggandor/leap.nvim", requires = { "tpope/vim-repeat" }}
 
@@ -110,7 +111,7 @@ return require("packer").startup(function(use)
 
 	use "terrortylor/nvim-comment"
 
-	use { "m4xshen/hardtime.nvim", requires = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" }}
+	-- use { "m4xshen/hardtime.nvim", requires = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" }}
 
 	use "echasnovski/mini.pairs"
 
