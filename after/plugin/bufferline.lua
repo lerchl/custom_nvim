@@ -30,7 +30,7 @@ bufferline.setup {
 			bg = base,  -- Background color for non-selected tabs
 		},
 		tab_selected = {
-			fg = white,  -- Text color for selected tabs
+			fg = base,  -- Text color for selected tabs
 			bg = main,  -- Background color for selected tabs
 		},
 		tab_separator = {
@@ -38,7 +38,7 @@ bufferline.setup {
 			bg = base,   -- Match with the bufferline background
 		},
 		tab_separator_selected = {
-			fg = main,   -- Match with selected buffer background
+			fg = base,   -- Match with selected buffer background
 			bg = main,   -- Match with selected buffer background
 		},
 		buffer_visible = {
@@ -46,7 +46,7 @@ bufferline.setup {
 			bg = base,  -- Match with bufferline background
 		},
 		buffer_selected = {
-			fg = white,  -- Text color for selected buffer
+			fg = base,  -- Text color for selected buffer
 			bg = main,  -- Background color for selected buffer
 			bold = true,
 		},
@@ -59,7 +59,7 @@ bufferline.setup {
 			bg = base,  -- Match with bufferline background
 		},
 		numbers_selected = {
-			fg = white,  -- Text color for selected buffer numbers
+			fg = base,  -- Text color for selected buffer numbers
 			bg = main,  -- Match with selected buffer background
 			bold = true,
 		},
@@ -80,7 +80,7 @@ bufferline.setup {
 			bg = base,  -- Match with bufferline background
 		},
 		indicator_selected = {
-			fg = white,  -- Text color for selected buffer indicator
+			fg = base,  -- Text color for selected buffer indicator
 			bg = main,  -- Match with selected buffer background
 		},
 		close_button = {
@@ -92,12 +92,12 @@ bufferline.setup {
 			bg = base,  -- Match with bufferline background
 		},
 		close_button_selected = {
-			fg = white,  -- Text color for selected close button
+			fg = base,  -- Text color for selected close button
 			bg = main,  -- Match with selected buffer background
 			bold = true,
 		},
 		pick_selected = {
-			fg = white,  -- Text color for selected pick
+			fg = base,  -- Text color for selected pick
 			bg = main,  -- Match with selected buffer background
 			bold = true,
 		},
@@ -128,11 +128,11 @@ bufferline.setup {
 			bg = base,  -- Set background color
 		},
 		modified_selected = {
-			fg = white,  -- Keep the text color
+			fg = base,  -- Keep the text color
 			bg = main,  -- Set background color to match selected buffer
 		},
 		duplicate_selected = {
-			fg = white,  -- Keep the text color
+			fg = base,  -- Keep the text color
 			bg = main,  -- Set background color to match selected buffer
 		},
 		duplicate_visible = {
@@ -152,7 +152,7 @@ bufferline.setup {
 			bg = base,  -- Set background color
 		},
 		diagnostic_selected = {
-			fg = white,  -- Keep the text color
+			fg = base,  -- Keep the text color
 			bg = main,  -- Set background color to match selected buffer
 			bold = true,
 		},

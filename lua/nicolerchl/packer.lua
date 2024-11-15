@@ -15,6 +15,8 @@ return require("packer").startup(function(use)
 
 	use { "nvim-lualine/lualine.nvim", requires = { "nvim-tree/nvim-web-devicons" }}
 
+	use { "utilyre/barbecue.nvim", requires = { "SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons" } }
+
 	use {
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
