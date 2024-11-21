@@ -19,4 +19,8 @@ vim.opt.fixeol = true
 vim.opt.fixendofline = true
 vim.opt.wrap = false
 
-vim.api.nvim_set_option("clipboard", "unnamed")
+if vim.fn.has('mac') == 1 then
+	vim.opt.clipboard = "unnamed"
+elseif vim.fn.has('unix') == 1 then
+	vim.opt.clipboard = "unnamedplus"
+end
