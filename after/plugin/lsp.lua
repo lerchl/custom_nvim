@@ -4,6 +4,7 @@ lsp_zero.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { buffer = bufnr, desc = "Hover" })
 	vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, { buffer = bufnr, desc = "Action" })
 	vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format() end, { buffer = bufnr, desc = "Format" })
+	vim.keymap.set("v", "f", vim.lsp.buf.format, { buffer = bufnr, desc = "Format" })
 	vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, { buffer = bufnr, desc = "Go to definition" })
 	vim.keymap.set("n", "<leader>gi", function() vim.lsp.buf.implementation() end, { buffer = bufnr, desc = "Go to implementation" })
 	vim.keymap.set("n", "<leader>gt", function() vim.lsp.buf.type_definition() end, { buffer = bufnr, desc = "Go to type definition" })
@@ -21,33 +22,37 @@ lsp_zero.on_attach(function(client, bufnr)
 
 	if client.server_capabilities.documentSymbolProvider then
 		require('nvim-navic').attach(client, bufnr)
-		require("nvim-navbuddy").attach(client, bufnr)
-	end
-
-	if client.server_capabilities.documentHighlightProvider then
-		-- Function to highlight document references
-		local function lsp_document_highlight()
-			vim.lsp.buf.document_highlight()
-		end
-
-		-- Function to clear document highlights
-		local function lsp_clear_references()
-			vim.lsp.buf.clear_references()
-		end
-
-		-- Create the autocmd for CursorHold to highlight references
-		vim.api.nvim_create_autocmd("CursorHold", {
-			callback = lsp_document_highlight,
-			group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true }),
-		})
-
-		-- Create the autocmd for CursorMoved to clear the highlights
-		vim.api.nvim_create_autocmd("CursorMoved", {
-			callback = lsp_clear_references,
-			group = vim.api.nvim_create_augroup("LspClearReferences", { clear = true }),
-		})
 	end
 end)
+
+-- Function to setup document highlight for buffers with an LSP client
+local function setup_document_highlight(client, bufnr)
+	if client.server_capabilities.documentHighlightProvider then
+		-- Create an augroup specific to this buffer to avoid conflicts
+		local group = vim.api.nvim_create_augroup("LspDocumentHighlight_" .. bufnr, { clear = true })
+
+		-- Highlight references on CursorHold
+		vim.api.nvim_create_autocmd("CursorHold",
+			{ buffer = bufnr, callback = vim.lsp.buf.document_highlight, group = group,
+		})
+
+		-- Clear highlights on CursorMoved
+		vim.api.nvim_create_autocmd("CursorMoved", {
+			buffer = bufnr,
+			callback = vim.lsp.buf.clear_references,
+			group = group,
+		})
+	end
+end
+
+-- Attach the setup function to the LSP attach event
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        local bufnr = args.buf
+        setup_document_highlight(client, bufnr)
+    end,
+})
 
 require('mason').setup({})
 require('mason-lspconfig').setup({

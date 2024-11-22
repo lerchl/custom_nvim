@@ -1,5 +1,3 @@
-local open_with_trouble = require("trouble.sources.telescope").open
-
 require("telescope").setup {
 	defaults = {
 		file_ignore_patterns = { "node_modules" },
@@ -7,11 +5,7 @@ require("telescope").setup {
 		layout_config = { prompt_position = "top" },
 		sorting_strategy = "ascending",
 		winblend = 0,
-		path_display = { "smart" },
-		mappings = {
-			i = { ["<c-t>"] = open_with_trouble },
-			n = { ["<c-t>"] = open_with_trouble },
-		}
+		path_display = { "smart" }
 	}
 }
 

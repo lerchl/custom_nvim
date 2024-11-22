@@ -28,27 +28,12 @@ return require("packer").startup(function(use)
 		}
 	}
 
-	-- use {
-	-- 	"folke/noice.nvim",
-	-- 	dependencies = {
-	-- 		"MunifTanjim/nui.nvim",
-	-- 		-- OPTIONAL:
-	-- 		--   `nvim-notify` is only needed, if you want to use the notification view.
-	-- 		--   If not available, we use `mini` as the fallback
-	-- 		"rcarriga/nvim-notify",
-	-- 	}
-	-- }
-
 	use "lukas-reineke/indent-blankline.nvim"
 
 	use "nvim-tree/nvim-web-devicons"
 
 	--- Nicer inputs and selections
 	use "stevearc/dressing.nvim"
-
-	use "folke/trouble.nvim"
-
-	use "folke/which-key.nvim"
 
 	-- GIT
 
@@ -94,16 +79,6 @@ return require("packer").startup(function(use)
 	}
 
 	use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig" }
-	use {
-		"SmiteshP/nvim-navbuddy",
-		requires = {
-			"neovim/nvim-lspconfig",
-			"SmiteshP/nvim-navic",
-			"MunifTanjim/nui.nvim",
-			"nvim-telescope/telescope.nvim" -- Optional
-		}
-	}
-
 
 	use "mfussenegger/nvim-dap"
 	use { "mfussenegger/nvim-jdtls", requires = "mfussenegger/nvim-dap" }
@@ -113,10 +88,8 @@ return require("packer").startup(function(use)
 
 	use "terrortylor/nvim-comment"
 
-	-- use { "m4xshen/hardtime.nvim", requires = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" }}
-
 	use "echasnovski/mini.pairs"
 
-	use { "kylechui/nvim-surround", tag = "*" }
+	use "kylechui/nvim-surround"
 end)
 
