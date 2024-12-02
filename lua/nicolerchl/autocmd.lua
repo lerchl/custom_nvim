@@ -16,6 +16,11 @@ autocmd('BufEnter', {
 	command = 'set fo-=c fo-=r fo-=o'
 })
 
+autocmd({ "BufNewFile", "BufRead", "BufWritePost" }, {
+  pattern = "*",
+  command = "setl fixeol"
+})
+
 -- local hide_cursor_and_colorcolumn_if_needed = function()
 -- 	local filetype = vim.bo.filetype;
 -- 	if filetype == "neo-tree" or filetype == "alpha" then
