@@ -55,14 +55,14 @@ local function is_no_name_buf(buf)
 			and vim.inspect(vim.api.nvim_buf_get_lines(buf, 0, -1, false)) == '{ "" }'
 end
 
-autocmd("BufEnter", {
-	callback = function()
-		local all_no_name = vim.tbl_filter(is_no_name_buf, vim.api.nvim_list_bufs())
-
-		for _, v in pairs(all_no_name) do
-			vim.cmd("Alpha")
-			vim.cmd("bd" .. v)
-		end
-	end
-})
+-- autocmd("BufEnter", {
+-- 	callback = function()
+-- 		local all_no_name = vim.tbl_filter(is_no_name_buf, vim.api.nvim_list_bufs())
+--
+-- 		for _, v in pairs(all_no_name) do
+-- 			vim.cmd("Alpha")
+-- 			vim.cmd("bd" .. v)
+-- 		end
+-- 	end
+-- })
 

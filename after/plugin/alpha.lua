@@ -76,4 +76,4 @@ dashboard.section.header.val = {
 
 dashboard.section.buttons.val = {}
 require("alpha").setup(dashboard.config)
-
+vim.keymap.set("n", "<leader>a", ":Alpha<CR>", { desc = "Show Alpha" })
