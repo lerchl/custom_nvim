@@ -11,5 +11,5 @@ local toggle_diffview = function()
 	end
 end
 
-vim.keymap.set("n", "<leader>dd", toggle_diffview, { desc = "Toggle Diffview" })
+vim.keymap.set("n", "<leader>D", toggle_diffview, { desc = "Toggle Diffview" })
 vim.keymap.set("n", "<leader>df", ":DiffviewFileHistory %<CR>", { desc = "Diffview current file history" })

@@ -50,7 +50,7 @@ end
 
 ----- SETUP
 
-local base = "#040404"
+local base = "#070707"
 local white = "#ffffff"
 local main = "#867bc9"
 
@@ -80,7 +80,7 @@ require("lualine").setup {
 	sections = {
 		lualine_a = {{ "mode", color = { fg = base } }},
 		lualine_b = {{ "branch" }}, -- , separator = { left = "", right = "" }
-		lualine_c = { "diff", "diagnostics" }, -- "filename", { "", separator = { left = "", right = "" }, color = { bg = "6a5acd" }, draw_empty = true }, { "", separator = { left = "", right = "" }, color = { bg = "8e84cc" }, draw_empty = true }, { "", separator = { left = "", right = "" }, color = { bg = "a8a3cc" }, draw_empty = true }, { get_scope, cond = navic.is_available, separator = { left = "", right = "" }, color = { fg = "000000", bg = "ffffff" } },
+		lualine_c = { "filename", "diff", "diagnostics" }, -- "filename", { "", separator = { left = "", right = "" }, color = { bg = "6a5acd" }, draw_empty = true }, { "", separator = { left = "", right = "" }, color = { bg = "8e84cc" }, draw_empty = true }, { "", separator = { left = "", right = "" }, color = { bg = "a8a3cc" }, draw_empty = true }, { get_scope, cond = navic.is_available, separator = { left = "", right = "" }, color = { fg = "000000", bg = "ffffff" } },
 		lualine_x = {{ get_git_blame, cond = has_git_blame, color = { fg = white } }, { "encoding", color = { fg = white } }},
 		lualine_y = { },
 		lualine_z = {{ "location", color = { fg = base } }, { "progress", color = { fg = base } }} -- , separator = { left = "" }, color = { fg = "ffffff" }
