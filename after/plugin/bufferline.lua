@@ -14,7 +14,8 @@ bufferline.setup {
 	options = {
 		numbers = "ordinal",
 		diagnostics = "nvim_lsp",
-		buffer_close_icon = ""
+		buffer_close_icon = "",
+		show_buffer_icons = false
 	},
 	highlights = {
 		fill = {
