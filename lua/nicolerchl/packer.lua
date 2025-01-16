@@ -7,7 +7,7 @@ return require("packer").startup(function(use)
 	-- UI
 	use "goolord/alpha-nvim"
 
-	use { "akinsho/bufferline.nvim", tag = "v4.5.3", requires = "nvim-tree/nvim-web-devicons" }
+	-- use { "akinsho/bufferline.nvim", tag = "v4.5.3", requires = "nvim-tree/nvim-web-devicons" }
 
 	use { "catppuccin/nvim", as = "catppuccin" }
 

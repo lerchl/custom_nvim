@@ -24,29 +24,67 @@ local get_git_blame = function()
 	return blame_text
 end
 
----   NAVIC
+---   BUFFERS
 
--- local navic = require("nvim-navic")
---
--- local keep_scope = function(scope)
--- 	return scope.type == "Method" or
--- 			scope.type == "Function" or
--- 			scope.type == "Constructor" or
--- 			scope.type == "Class"
--- end
---
--- local get_scope = function()
--- 	local data = util.filter_table(navic.get_data(), keep_scope)
--- 	if #data == 0 then return "no scope" end
--- 	local scope = data[#data]
--- 	local scope_text = scope.icon .. scope.name
---
--- 	if string.len(scope_text) > 65 then
--- 		return string.sub(scope_text, 1, 65) .. "..."
--- 	end
---
--- 	return scope_text
--- end
+local buffers = function()
+	-- Get the buffer list
+	local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+	-- Get the current buffer number
+	local current_bufnr = vim.api.nvim_get_current_buf()
+	-- Initialize buffer names
+	local previous_buffer, current_buffer, next_buffer = '', '', ''
+
+	-- Get diagnostics for the current buffer
+	local diagnostics = vim.diagnostic.get(current_bufnr)
+	local diagnostic_counts = { errors = 0, warnings = 0, hints = 0 }
+	for _, diag in ipairs(diagnostics) do
+		if diag.severity == vim.diagnostic.severity.ERROR then
+			diagnostic_counts.errors = diagnostic_counts.errors + 1
+		elseif diag.severity == vim.diagnostic.severity.WARN then
+			diagnostic_counts.warnings = diagnostic_counts.warnings + 1
+		elseif diag.severity == vim.diagnostic.severity.HINT then
+			diagnostic_counts.hints = diagnostic_counts.hints + 1
+		end
+	end
+
+	-- Build diagnostics string
+	local diagnostic_str = string.format(
+	'%%#DiagnosticError# %d %%#DiagnosticWarn# %d %%#DiagnosticHint# %d%%*',
+	diagnostic_counts.errors,
+	diagnostic_counts.warnings,
+	diagnostic_counts.hints
+	)
+
+	-- Find the previous, current, and next buffers
+	for i, buf in ipairs(buffers) do
+		if buf.bufnr == current_bufnr then
+			-- Set current buffer name
+			current_buffer = vim.fn.fnamemodify(buf.name, ':t')
+			-- Append diagnostics to current buffer
+			current_buffer = string.format('%%#LualineCurrentBuffer#%s%%* %s', current_buffer, diagnostic_str)
+			-- Set previous buffer name
+			if i > 1 then
+				previous_buffer = vim.fn.fnamemodify(buffers[i - 1].name, ':t')
+			end
+			-- Set next buffer name
+			if i < #buffers then
+				next_buffer = vim.fn.fnamemodify(buffers[i + 1].name, ':t')
+			end
+			break
+		end
+	end
+
+	-- Use fancy chevrons and format the result
+	local left_chevron = ''
+	local right_chevron = ''
+	return string.format('%s %s %s %s %s',
+	previous_buffer ~= '' and previous_buffer or 'No Prev',
+	left_chevron,
+	current_buffer ~= '' and current_buffer or 'No Current',
+	right_chevron,
+	next_buffer ~= '' and next_buffer or 'No Next'
+	)
+end
 
 ----- SETUP
 
@@ -70,6 +108,9 @@ custom_catppuccin.inactive.b.bg = white
 custom_catppuccin.inactive.b.fg = base
 custom_catppuccin.normal.c.bg = base
 
+-- Define custom highlight groups
+vim.api.nvim_set_hl(0, 'LualineCurrentBuffer', { fg = main, bold = true })  -- Gold for the current buffer
+
 require("lualine").setup {
 	options = {
 		theme = custom_catppuccin,
@@ -79,11 +120,11 @@ require("lualine").setup {
 	},
 	sections = {
 		lualine_a = {{ "mode", color = { fg = base } }},
-		lualine_b = {{ "branch" }}, -- , separator = { left = "", right = "" }
-		lualine_c = { "filename", "diff", "diagnostics" }, -- "filename", { "", separator = { left = "", right = "" }, color = { bg = "6a5acd" }, draw_empty = true }, { "", separator = { left = "", right = "" }, color = { bg = "8e84cc" }, draw_empty = true }, { "", separator = { left = "", right = "" }, color = { bg = "a8a3cc" }, draw_empty = true }, { get_scope, cond = navic.is_available, separator = { left = "", right = "" }, color = { fg = "000000", bg = "ffffff" } },
-		lualine_x = {{ get_git_blame, cond = has_git_blame, color = { fg = white } }, { "encoding", color = { fg = white } }},
-		lualine_y = { },
-		lualine_z = {{ "location", color = { fg = base } }, { "progress", color = { fg = base } }} -- , separator = { left = "" }, color = { fg = "ffffff" }
+		lualine_b = {{ "branch", separator = { left = "", right = "" } }},
+		lualine_c = { '%=', buffers },
+		lualine_x = {{ "encoding", color = { fg = white }}}, -- { get_git_blame, cond = has_git_blame, color = { fg = white }}, 
+		lualine_y = {},
+		lualine_z = {{ "location", color = { fg = base }, separator = { left = "" }}, { "progress", color = { fg = base }}}
 	},
 }
 
