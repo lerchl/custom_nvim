@@ -21,7 +21,11 @@ require("catppuccin").setup {
 			NeoTreeRootName = { fg = main },
 			NeoTreeDirectoryName = { fg = main },
 			NeoTreeDirectoryIcon = { fg = main },
-			LineNr = { fg = "#888888" }
+			LineNr = { fg = "#888888" },
+			DiffAdd = { fg = C.green },
+			DiffChange = { fg = C.gray },
+			DiffDelete = { fg = C.red },
+			DiffText = { fg = C.blue }
 		}
 	end
 }
