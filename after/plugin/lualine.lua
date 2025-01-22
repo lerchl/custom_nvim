@@ -88,28 +88,28 @@ end
 
 ----- SETUP
 
-local base = "#070707"
-local white = "#ffffff"
-local main = "#867bc9"
+-- local base = "#070707"
+-- local white = "#ffffff"
+-- local main = "#867bc9"
 
 local custom_catppuccin = require("lualine.themes.catppuccin")
-custom_catppuccin.normal.a.bg = main
-custom_catppuccin.normal.b.bg = white
-custom_catppuccin.normal.b.fg = base
-custom_catppuccin.insert.b.bg = white
-custom_catppuccin.insert.b.fg = base
-custom_catppuccin.visual.b.bg = white
-custom_catppuccin.visual.b.fg = base
-custom_catppuccin.replace.b.bg = white
-custom_catppuccin.replace.b.fg = base
-custom_catppuccin.command.b.bg = white
-custom_catppuccin.command.b.fg = base
-custom_catppuccin.inactive.b.bg = white
-custom_catppuccin.inactive.b.fg = base
-custom_catppuccin.normal.c.bg = base
+-- custom_catppuccin.normal.a.bg = main
+-- custom_catppuccin.normal.b.bg = white
+-- custom_catppuccin.normal.b.fg = base
+-- custom_catppuccin.insert.b.bg = white
+-- custom_catppuccin.insert.b.fg = base
+-- custom_catppuccin.visual.b.bg = white
+-- custom_catppuccin.visual.b.fg = base
+-- custom_catppuccin.replace.b.bg = white
+-- custom_catppuccin.replace.b.fg = base
+-- custom_catppuccin.command.b.bg = white
+-- custom_catppuccin.command.b.fg = base
+-- custom_catppuccin.inactive.b.bg = white
+-- custom_catppuccin.inactive.b.fg = base
+-- custom_catppuccin.normal.c.bg = base
 
 -- Define custom highlight groups
-vim.api.nvim_set_hl(0, 'LualineCurrentBuffer', { fg = main, bold = true })  -- Gold for the current buffer
+-- vim.api.nvim_set_hl(0, 'LualineCurrentBuffer', { fg = main, bold = true })  -- Gold for the current buffer
 
 require("lualine").setup {
 	options = {
@@ -119,12 +119,12 @@ require("lualine").setup {
 		globalstatus = true
 	},
 	sections = {
-		lualine_a = {{ "mode", color = { fg = base } }},
+		lualine_a = {{ "mode" }},
 		lualine_b = {{ "branch", separator = { left = "", right = "" } }},
 		lualine_c = { '%=', buffers },
-		lualine_x = {{ "encoding", color = { fg = white }}}, -- { get_git_blame, cond = has_git_blame, color = { fg = white }}, 
+		lualine_x = {{ "encoding" }}, -- { get_git_blame, cond = has_git_blame, color = { fg = white }}, 
 		lualine_y = {},
-		lualine_z = {{ "location", color = { fg = base }, separator = { left = "" }}, { "progress", color = { fg = base }}}
+		lualine_z = {{ "location" , separator = { left = "" }}, { "progress" }}
 	},
 }
 
