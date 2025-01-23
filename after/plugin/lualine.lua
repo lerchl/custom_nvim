@@ -49,7 +49,7 @@ local buffers = function()
 
 	-- Build diagnostics string
 	local diagnostic_str = string.format(
-	'%%#DiagnosticError# %d %%#DiagnosticWarn# %d %%#DiagnosticHint# %d%%*',
+	' %d  %d  %d',
 	diagnostic_counts.errors,
 	diagnostic_counts.warnings,
 	diagnostic_counts.hints
