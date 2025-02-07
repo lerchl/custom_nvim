@@ -115,7 +115,7 @@ local function enable_codelens(bufnr)
 end
 
 local function enable_debugger(bufnr)
-	require('jdtls').setup_dap({hotcodereplace = 'auto'})
+	require('jdtls').setup_dap()
 	require('jdtls.dap').setup_dap_main_class_configs()
 
 	local opts = {buffer = bufnr}
@@ -221,37 +221,37 @@ local function jdtls_setup(event)
 				-- settings = {
 					--   profile = 'asdf'
 					-- },
-			}
-		},
-		signatureHelp = {
-			enabled = true,
-		},
-		completion = {
-			favoriteStaticMembers = {
-				'org.hamcrest.MatcherAssert.assertThat',
-				'org.hamcrest.Matchers.*',
-				'org.hamcrest.CoreMatchers.*',
-				'org.junit.jupiter.api.Assertions.*',
-				'java.util.Objects.requireNonNull',
-				'java.util.Objects.requireNonNullElse',
-				'org.mockito.Mockito.*',
 			},
-		},
-		contentProvider = {
-			preferred = 'fernflower',
-		},
-		extendedClientCapabilities = jdtls.extendedClientCapabilities,
-		sources = {
-			organizeImports = {
-				starThreshold = 9999,
-				staticStarThreshold = 9999,
-			}
-		},
-		codeGeneration = {
-			toString = {
-				template = '${object.className}{${member.name()}=${member.value}, ${otherMembers}}',
+			signatureHelp = {
+				enabled = true,
 			},
-			useBlocks = true,
+			completion = {
+				favoriteStaticMembers = {
+					'org.hamcrest.MatcherAssert.assertThat',
+					'org.hamcrest.Matchers.*',
+					'org.hamcrest.CoreMatchers.*',
+					'org.junit.jupiter.api.Assertions.*',
+					'java.util.Objects.requireNonNull',
+					'java.util.Objects.requireNonNullElse',
+					'org.mockito.Mockito.*',
+				},
+			},
+			contentProvider = {
+				preferred = 'fernflower',
+			},
+			extendedClientCapabilities = jdtls.extendedClientCapabilities,
+			sources = {
+				organizeImports = {
+					starThreshold = 9999,
+					staticStarThreshold = 9999,
+				}
+			},
+			codeGeneration = {
+				toString = {
+					template = '${object.className}{${member.name()}=${member.value}, ${otherMembers}}',
+				},
+				useBlocks = true,
+			}
 		},
 	}
 
