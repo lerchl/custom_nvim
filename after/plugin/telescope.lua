@@ -1,21 +1,23 @@
 require("telescope").setup {
 	defaults = {
-		file_ignore_patterns = { "node_modules" },
-		layout_strategy = "horizontal",
-		layout_config = { prompt_position = "top" },
+		file_ignore_patterns = { "node_modules", "target" },
+		layout_strategy = "vertical",
+		layout_config = { prompt_position = "bottom" },
 		sorting_strategy = "ascending",
 		winblend = 0,
 		path_display = { "smart" }
 	}
 }
 
-local builtin = require('telescope.builtin')
+local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>F", builtin.find_files, { desc = "Find Files" })
 vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "Find Git Files" })
-vim.keymap.set("n", "<leader>fo", function() builtin.treesitter{ ignore_symbols= { "import", "parameter", "var" } } end, { desc = "Find Treesitter" })
+vim.keymap.set("n", "<leader>fo", function() builtin.treesitter{ ignore_symbols= { "import", "parameter", "var", "" } } end, { desc = "Find Treesitter" })
 vim.keymap.set("n", "<leader>ft", builtin.live_grep, { desc = "Find Text" })
 vim.keymap.set("n", "<leader>fm", builtin.keymaps, { desc = "Find Keymaps" })
 vim.keymap.set("n", "<leader>fh", builtin.highlights, { desc = "Find Highlights" })
+vim.keymap.set("n", "<leader>fci", builtin.lsp_incoming_calls, { desc = "Find incoming calls" })
+vim.keymap.set("n", "<leader>fco", builtin.lsp_outgoing_calls, { desc = "Find outgoing calls" })
 
 local action_state = require("telescope.actions.state")
 
