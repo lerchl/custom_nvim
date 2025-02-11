@@ -25,6 +25,7 @@ end
 ----- SETUP
 
 local custom_catppuccin = require("lualine.themes.catppuccin")
+custom_catppuccin.normal.c.bg = "#1e1e2e"
 
 require("lualine").setup {
 	options = {

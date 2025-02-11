@@ -1,8 +1,8 @@
 require("telescope").setup {
 	defaults = {
 		file_ignore_patterns = { "node_modules", "target" },
-		layout_strategy = "vertical",
-		layout_config = { prompt_position = "bottom" },
+		layout_strategy = "horizontal",
+		layout_config = { prompt_position = "top" },
 		sorting_strategy = "ascending",
 		winblend = 0,
 		path_display = { "smart" }
@@ -10,12 +10,12 @@ require("telescope").setup {
 }
 
 local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>F", builtin.find_files, { desc = "Find Files" })
-vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "Find Git Files" })
-vim.keymap.set("n", "<leader>fo", function() builtin.treesitter{ ignore_symbols= { "import", "parameter", "var", "" } } end, { desc = "Find Treesitter" })
-vim.keymap.set("n", "<leader>ft", builtin.live_grep, { desc = "Find Text" })
-vim.keymap.set("n", "<leader>fm", builtin.keymaps, { desc = "Find Keymaps" })
-vim.keymap.set("n", "<leader>fh", builtin.highlights, { desc = "Find Highlights" })
+vim.keymap.set("n", "<leader>F", builtin.find_files, { desc = "Find files" })
+vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "Find git files" })
+vim.keymap.set("n", "<leader>fo", function() builtin.treesitter{ ignore_symbols= { "import", "parameter", "var", "" } } end, { desc = "Find treesitter" })
+vim.keymap.set("n", "<leader>ft", builtin.live_grep, { desc = "Find text" })
+vim.keymap.set("n", "<leader>fm", builtin.keymaps, { desc = "Find keymaps" })
+vim.keymap.set("n", "<leader>fh", builtin.highlights, { desc = "Find highlights" })
 vim.keymap.set("n", "<leader>fci", builtin.lsp_incoming_calls, { desc = "Find incoming calls" })
 vim.keymap.set("n", "<leader>fco", builtin.lsp_outgoing_calls, { desc = "Find outgoing calls" })
 
