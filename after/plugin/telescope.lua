@@ -18,6 +18,7 @@ vim.keymap.set("n", "<leader>fm", builtin.keymaps, { desc = "Find keymaps" })
 vim.keymap.set("n", "<leader>fh", builtin.highlights, { desc = "Find highlights" })
 vim.keymap.set("n", "<leader>fci", builtin.lsp_incoming_calls, { desc = "Find incoming calls" })
 vim.keymap.set("n", "<leader>fco", builtin.lsp_outgoing_calls, { desc = "Find outgoing calls" })
+vim.keymap.set("n", ":", builtin.commands, { desc = "Commands" })
 
 local action_state = require("telescope.actions.state")
 
