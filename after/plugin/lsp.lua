@@ -1,5 +1,3 @@
-require("neoconf").setup()
-
 local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
@@ -25,6 +23,8 @@ lsp_zero.on_attach(function(client, bufnr)
 	if client.server_capabilities.documentSymbolProvider then
 		require('nvim-navic').attach(client, bufnr)
 	end
+
+	vim.lsp.inlay_hint.enable(bufnr, true)
 end)
 
 -- Function to setup document highlight for buffers with an LSP client
@@ -69,16 +69,21 @@ require('mason-lspconfig').setup({
 		eslint = function()
 			require("lspconfig").eslint.setup {
 				settings = {
-					eslint = {
-						rules = {
-							customizations = {
-								{ rule = "*", severity = "warn" }
-							}
-						}
+					rulesCustomizations = {
+						{ rule = "*", severity = "warn" }
 					}
 				}
 			}
 		end,
+		ts_ls = function()
+			require("lspconfig").ts_ls.setup {
+				preferences = {
+					typescript = {
+						includeInlayParameterNameHints = "literals"
+					}
+				}
+			}
+		end
 	}
 })
 
