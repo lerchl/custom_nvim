@@ -36,11 +36,10 @@ require("lualine").setup {
 	},
 	sections = {
 		lualine_a = {{ "mode" }},
-		lualine_b = {{ "branch", separator = { left = "", right = "" } }},
+		lualine_b = {{ "branch", separator = { right = "" } }},
 		lualine_c = { "filename" },
 		lualine_x = {{ get_git_blame, cond = has_git_blame }, "encoding" },
 		lualine_y = {},
-		lualine_z = {{ "location" , separator = { left = "" }}, { "progress" }}
+		lualine_z = {{ "location" , separator = { left = "" }}, { "progress" }}
 	},
 }
-
