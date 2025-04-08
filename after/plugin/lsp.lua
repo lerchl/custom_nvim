@@ -24,7 +24,7 @@ lsp_zero.on_attach(function(client, bufnr)
 		require('nvim-navic').attach(client, bufnr)
 	end
 
-	vim.lsp.inlay_hint.enable(bufnr, true)
+	-- vim.lsp.inlay_hint.enable(bufnr, true)
 end)
 
 -- Function to setup document highlight for buffers with an LSP client

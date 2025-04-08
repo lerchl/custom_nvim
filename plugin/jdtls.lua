@@ -47,9 +47,7 @@ local function get_jdtls_paths()
 	---
 	-- Include java-test bundle if present
 	---
-	local java_test_path = require('mason-registry')
-	.get_package('java-test')
-	:get_install_path()
+	local java_test_path = require("mason-registry").get_package("java-test"):get_install_path()
 
 	local java_test_bundle = vim.split(
 	vim.fn.glob(java_test_path .. '/extension/server/*.jar'),
@@ -63,14 +61,8 @@ local function get_jdtls_paths()
 	---
 	-- Include java-debug-adapter bundle if present
 	---
-	local java_debug_path = require('mason-registry')
-	.get_package('java-debug-adapter')
-	:get_install_path()
-
-	local java_debug_bundle = vim.split(
-	vim.fn.glob(java_debug_path .. '/extension/server/com.microsoft.java.debug.plugin-*.jar'),
-	'\n'
-	)
+	local java_debug_path = require("mason-registry").get_package("java-debug-adapter"):get_install_path()
+	local java_debug_bundle = vim.split(vim.fn.glob(java_debug_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar"), "\n")
 
 	if java_debug_bundle[1] ~= '' then
 		vim.list_extend(path.bundles, java_debug_bundle)
@@ -85,19 +77,17 @@ local function get_jdtls_paths()
 		-- you can find the list here: 
 		-- https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
 		--
-		-- This example assume you are using sdkman: https://sdkman.io
 		-- {
-			--   name = 'JavaSE-17',
-			--   path = vim.fn.expand('~/.sdkman/candidates/java/17.0.6-tem'),
-			-- },
-			-- {
-				--   name = 'JavaSE-18',
-				--   path = vim.fn.expand('~/.sdkman/candidates/java/18.0.2-amzn'),
-				-- },
+		-- 	name = "JavaSE-1.8",
+		-- 	path = vim.fn.expand("$JAVA_HOME_8"),
+		-- },
+		-- {
+		-- 	name = "JavaSE-17",
+		-- 	path = vim.fn.expand("$JAVA_HOME_17"),
+		-- }
 	}
 
 	cache_vars.paths = path
-
 	return path
 end
 

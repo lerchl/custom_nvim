@@ -1,6 +1,5 @@
 require("diffview").setup {
-	diff_binaries = false,
-	use_icons = false
+	enhanced_diff_hl = true
 }
 
 local toggle_diffview = function()

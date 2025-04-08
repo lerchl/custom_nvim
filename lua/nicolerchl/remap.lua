@@ -2,8 +2,8 @@
 vim.g.mapleader = " "
 
 -- saving
-vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", { silent = true })
-vim.keymap.set("n", "<C-s>", ":w<CR>", { silent = true })
+vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>:w<CR>", { silent = true })
+vim.keymap.set("n", "<C-s>", ":w<CR>:w<CR>", { silent = true })
 
 -- moving between windows
 vim.keymap.set("n", "<C-Left>", "<C-w>h")
