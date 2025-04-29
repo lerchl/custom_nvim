@@ -15,8 +15,6 @@ return require("packer").startup(function(use)
 
 	use { "nvim-lualine/lualine.nvim", requires = { "nvim-tree/nvim-web-devicons" }}
 
-	use { "utilyre/barbecue.nvim", requires = { "SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons" } }
-
 	use {
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
@@ -31,6 +29,8 @@ return require("packer").startup(function(use)
 	use "lukas-reineke/indent-blankline.nvim"
 
 	use "nvim-tree/nvim-web-devicons"
+
+	use { "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, }
 
 	--- Nicer inputs and selections
 	use "stevearc/dressing.nvim"
@@ -86,8 +86,6 @@ return require("packer").startup(function(use)
 			{ "rafamadriz/friendly-snippets" }
 		}
 	}
-
-	use { "SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig" }
 
 	use "mfussenegger/nvim-dap"
 	use { "mfussenegger/nvim-jdtls", requires = "mfussenegger/nvim-dap" }
