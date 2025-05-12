@@ -6,7 +6,7 @@ require("neo-tree").setup {
 		use_libuv_file_watcher = true,
 	},
 	window = {
-		position = "left"
+		position = "current"
 	}
 }
 

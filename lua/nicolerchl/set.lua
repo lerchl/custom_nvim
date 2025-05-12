@@ -17,6 +17,9 @@ vim.opt.updatetime = 50
 vim.opt.hidden = true
 vim.opt.wrap = false
 
+-- disable mouse
+vim.opt.mouse = ""
+
 if vim.fn.has('mac') == 1 then
 	vim.opt.clipboard = "unnamed"
 elseif vim.fn.has('unix') == 1 then

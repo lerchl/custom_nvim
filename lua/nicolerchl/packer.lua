@@ -7,8 +7,6 @@ return require("packer").startup(function(use)
 	-- UI
 	use "goolord/alpha-nvim"
 
-	-- use { "akinsho/bufferline.nvim", tag = "v4.5.3", requires = "nvim-tree/nvim-web-devicons" }
-
 	use { "catppuccin/nvim", as = "catppuccin" }
 
 	use "sindrets/diffview.nvim"
@@ -64,7 +62,7 @@ return require("packer").startup(function(use)
 
 	use "folke/trouble.nvim"
 
-	use { "nvim-treesitter/nvim-treesitter", tag = "v0.9.2", run = ":TSUpdate" }
+	use { "nvim-treesitter/nvim-treesitter", tag = "v0.9.3", run = ":TSUpdate" }
 	use { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter", requires = "nvim-treesitter/nvim-treesitter" }
 
 	-- LSP / DAP
@@ -74,8 +72,8 @@ return require("packer").startup(function(use)
 		branch = "v3.x",
 		requires = {
 			{ "neovim/nvim-lspconfig" },
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
+			{ "mason-org/mason.nvim", branch = "v1.x" },
+			{ "mason-org/mason-lspconfig.nvim", branch = "v1.x" },
 			{ "hrsh7th/nvim-cmp" },
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "hrsh7th/cmp-buffer" },
