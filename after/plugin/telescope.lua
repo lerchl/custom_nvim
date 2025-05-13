@@ -1,19 +1,21 @@
 local open_with_trouble = require("trouble.sources.telescope").open
 
 require("telescope").setup {
-	defaults = {
-		file_ignore_patterns = { "node_modules", "target" },
-		layout_strategy = "horizontal",
-		layout_config = { prompt_position = "top" },
-		sorting_strategy = "ascending",
-		winblend = 0,
-		path_display = { "smart" },
-		mappings = {
-			i = { ["<c-t>"] = open_with_trouble },
-			n = { ["<c-t>"] = open_with_trouble },
-		}
-	}
+    defaults = {
+        file_ignore_patterns = { "node_modules", "target" },
+        layout_strategy = "horizontal",
+        layout_config = { prompt_position = "top" },
+        sorting_strategy = "ascending",
+        winblend = 0,
+        path_display = { "smart" },
+        mappings = {
+            i = { ["<c-t>"] = open_with_trouble },
+            n = { ["<c-t>"] = open_with_trouble },
+        }
+    }
 }
+
+require("telescope").load_extension("ui-select")
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>F", builtin.find_files, { desc = "Find files" })
@@ -29,19 +31,19 @@ vim.keymap.set("n", "<leader>:", builtin.commands, { desc = "Commands" })
 local action_state = require("telescope.actions.state")
 
 vim.keymap.set("n", "<leader> ", function()
-	builtin.buffers {
-		ignore_current_buffer = false,
-		attach_mappings = function(prompt_bufnr, map)
-			local delete_buffer = function()
-				local current_picker = action_state.get_current_picker(prompt_bufnr)
-				current_picker:delete_selection(function(selection)
-					vim.api.nvim_buf_delete(selection.bufnr, { force = true })
-				end)
-			end
+    builtin.buffers {
+        ignore_current_buffer = false,
+        attach_mappings = function(prompt_bufnr, map)
+            local delete_buffer = function()
+                local current_picker = action_state.get_current_picker(prompt_bufnr)
+                current_picker:delete_selection(function(selection)
+                    vim.api.nvim_buf_delete(selection.bufnr, { force = true })
+                end)
+            end
 
-			map("i", "<c-d>", delete_buffer)
+            map("i", "<c-d>", delete_buffer)
 
-			return true
-		end
-	}
+            return true
+        end
+    }
 end, { desc = "Find Buffers" })
