@@ -32,7 +32,7 @@ local action_state = require("telescope.actions.state")
 
 vim.keymap.set("n", "<leader> ", function()
     builtin.buffers {
-        ignore_current_buffer = false,
+        ignore_current_buffer = true,
         attach_mappings = function(prompt_bufnr, map)
             local delete_buffer = function()
                 local current_picker = action_state.get_current_picker(prompt_bufnr)
