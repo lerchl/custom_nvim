@@ -7,6 +7,7 @@ bufferline .setup {
         diagnostics = "nvim_lsp",
         numbers = "ordinal",
         show_buffer_close_icons = false,
+        show_close_icon = false
     },
     highlights = {
         fill = { fg = palette.text, bg = palette.base },
