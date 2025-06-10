@@ -7,6 +7,8 @@ return require("packer").startup(function(use)
     -- UI
     use "goolord/alpha-nvim"
 
+    use { "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" }
+
     use { "catppuccin/nvim", as = "catppuccin" }
 
     use "sindrets/diffview.nvim"
@@ -90,6 +92,8 @@ return require("packer").startup(function(use)
     use "https://gitlab.com/schrieveslaach/sonarlint.nvim"
 
     -- MISC
+
+    use "famiu/bufdelete.nvim"
 
     use "terrortylor/nvim-comment"
 

@@ -24,11 +24,6 @@ vim.keymap.set('n', '<S-Left>', ':vertical resize +2<CR>', { noremap = true, sil
 vim.keymap.set('n', '<S-Up>', ':resize +2<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-Down>', ':resize -2<CR>', { noremap = true, silent = true })
 
--- buffers
-vim.keymap.set("n", "<A-Right>", "<C-i>", { noremap = true, silent = true })
-vim.keymap.set("n", "<A-Left>", "<C-o>", { noremap = true, silent = true })
-
-
 -- tabs
 for i = 1, 9 do
 	vim.keymap.set(
