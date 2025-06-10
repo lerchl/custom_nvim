@@ -20,7 +20,7 @@ lsp_zero.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<leader>vo", vim.lsp.buf.outgoing_calls, { buffer = bufnr, desc = "Show outgoing calls" })
 	-- vim.keymap.set("n", "<leader>vt", vim.lsp.buf.typehierarchy, { buffer = bufnr, desc = "Show type hierarchy" })
 
-	vim.lsp.inlay_hint.enable(bufnr, true)
+	vim.lsp.inlay_hint.enable(true)
 end)
 
 -- Function to setup document highlight for buffers with an LSP client

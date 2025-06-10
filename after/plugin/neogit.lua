@@ -4,5 +4,5 @@ require("neogit").setup {
 	}
 }
 
-vim.keymap.set("n", "<leader>G", function() vim.cmd("Neogit") end, { desc = "Open Neogit" })
+vim.keymap.set("n", "<leader>G", require("neogit").open, { desc = "Open Neogit" })
 

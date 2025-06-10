@@ -93,5 +93,3 @@ vim.keymap.set("n", "<leader>de", dapui.eval, { desc = "Evaluate expression" })
 
 dap.listeners.before.attach.dapui_config = function() dapui.open(2) end
 dap.listeners.before.launch.dapui_config = function() dapui.open(2) end
-
-
