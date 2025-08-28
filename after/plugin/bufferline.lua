@@ -76,5 +76,5 @@ vim.keymap.set("n", "<leader>bc<right>", function() vim.cmd("BufferLineCloseRigh
 vim.keymap.set("n", "<leader>bco", function() vim.cmd("BufferLineCloseOthers") end, { noremap = true, silent = true, desc = "Close all other buffers" })
 
 for index = 1, 9 do
-    vim.keymap.set("n", "<leader>" .. index, function() vim.cmd("BufferLineGoToBuffer " .. index) end, { noremap = true, silent = true, desc = "Go to buffer " .. index })
+    vim.keymap.set("n", "<leader>" .. index, function() bufferline.go_to(index, true) end, { noremap = true, silent = true, desc = "Go to buffer " .. index })
 end

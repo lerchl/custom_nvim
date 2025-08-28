@@ -21,9 +21,7 @@ return require("packer").startup(function(use)
 
     use { "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" }
 
-    -- use { "catppuccin/nvim", as = "catppuccin" }
-    -- use "nyoom-engineering/oxocarbon.nvim"
-    use "folke/tokyonight.nvim"
+    use { "catppuccin/nvim", as = "catppuccin" }
 
     use "sindrets/diffview.nvim"
 
@@ -44,8 +42,10 @@ return require("packer").startup(function(use)
 
     use "nvim-tree/nvim-web-devicons"
 
-    use { "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = {
-            "markdown" } end, ft = { "markdown" }, }
+    use { "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function()
+        vim.g.mkdp_filetypes = {
+            "markdown" }
+    end, ft = { "markdown" }, }
 
     use {
         "folke/which-key.nvim",

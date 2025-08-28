@@ -1,12 +1,9 @@
--- require("catppuccin").setup {
---     flavour = "mocha",
---     no_italic = true,
---     integrations = {
---         diffview = true
---     }
--- }
---
--- vim.cmd("colorscheme catppuccin")
+require("catppuccin").setup {
+    flavour = "mocha",
+    no_italic = true,
+    integrations = {
+        diffview = true
+    }
+}
 
--- vim.opt.background = "dark" -- set this to dark or light
-vim.cmd("colorscheme tokyonight-night")
+vim.cmd("colorscheme catppuccin")
