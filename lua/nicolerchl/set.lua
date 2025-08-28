@@ -17,6 +17,8 @@ vim.opt.updatetime = 50
 vim.opt.hidden = true
 vim.opt.wrap = false
 
+vim.opt.fillchars:append("diff:╱")
+
 -- disable mouse
 vim.opt.mouse = ""
 

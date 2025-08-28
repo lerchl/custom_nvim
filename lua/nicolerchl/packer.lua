@@ -21,11 +21,13 @@ return require("packer").startup(function(use)
 
     use { "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" }
 
-    use { "catppuccin/nvim", as = "catppuccin" }
+    -- use { "catppuccin/nvim", as = "catppuccin" }
+    -- use "nyoom-engineering/oxocarbon.nvim"
+    use "folke/tokyonight.nvim"
 
     use "sindrets/diffview.nvim"
 
-    use { "nvim-lualine/lualine.nvim", requires = { "nvim-tree/nvim-web-devicons" }}
+    use { "nvim-lualine/lualine.nvim", requires = { "nvim-tree/nvim-web-devicons" } }
 
     use {
         "nvim-neo-tree/neo-tree.nvim",
@@ -42,11 +44,12 @@ return require("packer").startup(function(use)
 
     use "nvim-tree/nvim-web-devicons"
 
-    use { "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, }
+    use { "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = {
+            "markdown" } end, ft = { "markdown" }, }
 
     use {
         "folke/which-key.nvim",
-        config = function ()
+        config = function()
             require("which-key").setup()
         end
     }
@@ -67,9 +70,9 @@ return require("packer").startup(function(use)
     -- NAV
     use "declancm/cinnamon.nvim"
 
-    use { "ggandor/leap.nvim", requires = { "tpope/vim-repeat" }}
+    use { "ggandor/leap.nvim", requires = { "tpope/vim-repeat" } }
 
-    use { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" }}
+    use { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } }
     use "nvim-telescope/telescope-ui-select.nvim"
 
     use "folke/trouble.nvim"
@@ -84,7 +87,7 @@ return require("packer").startup(function(use)
         branch = "v3.x",
         requires = {
             { "neovim/nvim-lspconfig" },
-            { "mason-org/mason.nvim", branch = "v1.x" },
+            { "mason-org/mason.nvim",           branch = "v1.x" },
             { "mason-org/mason-lspconfig.nvim", branch = "v1.x" },
             { "hrsh7th/nvim-cmp" },
             { "hrsh7th/cmp-nvim-lsp" },
@@ -99,7 +102,7 @@ return require("packer").startup(function(use)
 
     use "mfussenegger/nvim-dap"
     use { "mfussenegger/nvim-jdtls", requires = "mfussenegger/nvim-dap" }
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" }}
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } }
 
     use "https://gitlab.com/schrieveslaach/sonarlint.nvim"
 
@@ -117,4 +120,3 @@ return require("packer").startup(function(use)
 
     use "tpope/vim-sleuth"
 end)
-
