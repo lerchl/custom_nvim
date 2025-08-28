@@ -7,6 +7,18 @@ return require("packer").startup(function(use)
     -- UI
     use "goolord/alpha-nvim"
 
+    use {
+        "utilyre/barbecue.nvim",
+        tag = "*",
+        requires = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons"
+        },
+        config = function()
+            require("barbecue").setup()
+        end
+    }
+
     use { "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" }
 
     use { "catppuccin/nvim", as = "catppuccin" }
@@ -91,6 +103,8 @@ return require("packer").startup(function(use)
 
     use "https://gitlab.com/schrieveslaach/sonarlint.nvim"
 
+    use "stevearc/conform.nvim"
+
     -- MISC
 
     use "famiu/bufdelete.nvim"
@@ -100,5 +114,7 @@ return require("packer").startup(function(use)
     use "echasnovski/mini.pairs"
 
     use "kylechui/nvim-surround"
+
+    use "tpope/vim-sleuth"
 end)
 

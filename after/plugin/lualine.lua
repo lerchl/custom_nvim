@@ -29,9 +29,9 @@ end
 local get_indent_spec = function()
     if vim.opt.expandtab:get() then
         local spaces = vim.opt.shiftwidth:get()
-        return "using " .. spaces .. " spaces"
+        return spaces .. " spaces"
     else
-        return "using tabs"
+        return "tabs"
     end
 end
 
