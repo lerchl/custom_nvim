@@ -108,6 +108,8 @@ return require("packer").startup(function(use)
 
     use "stevearc/conform.nvim"
 
+    use "mfussenegger/nvim-lint"
+
     -- MISC
 
     use "famiu/bufdelete.nvim"
