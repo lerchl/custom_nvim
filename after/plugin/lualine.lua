@@ -37,8 +37,9 @@ end
 
 ----- SETUP
 
+local palette = require("catppuccin.palettes").get_palette("mocha")
 local custom_catppuccin = require("lualine.themes.catppuccin")
-custom_catppuccin.normal.c.bg = "#1e1e2e"
+custom_catppuccin.normal.c.bg = palette.base
 
 require("lualine").setup {
     options = {
@@ -48,11 +49,11 @@ require("lualine").setup {
         globalstatus = true
     },
     sections = {
-        lualine_a = {{ "mode" }},
-        lualine_b = {{ "branch", separator = { right = "" } }},
-        lualine_c = { "filename" },
-        lualine_x = {{ get_git_blame, cond = has_git_blame }, { get_indent_spec, cond = filetype_not_excluded }, "encoding" },
+        lualine_a = { { "mode", separator = { left = " " } } },
+        lualine_b = { { "branch", separator = { right = "" } }, { "filename", color = { bg = "#eeeeee", fg = palette.base }, separator = { right = "" } } },
+        lualine_c = { { "diagnostics", symbols = { error = " ", warn = " ", info = " ", hint = "󰺕 ", } } },
+        lualine_x = { { get_git_blame, cond = has_git_blame }, { get_indent_spec, cond = filetype_not_excluded }, "encoding" },
         lualine_y = {},
-        lualine_z = {{ "location" , separator = { left = "" }}, { "progress" }}
+        lualine_z = { { "location", separator = { left = "" } }, { "progress", separator = { right = " " } } }
     }
 }
