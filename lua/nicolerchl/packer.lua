@@ -86,7 +86,7 @@ return require("packer").startup(function(use)
         "VonHeikemen/lsp-zero.nvim",
         branch = "v3.x",
         requires = {
-            { "neovim/nvim-lspconfig" },
+            { "neovim/nvim-lspconfig", tag = "v2.5.0" },
             { "mason-org/mason.nvim",           branch = "v1.x" },
             { "mason-org/mason-lspconfig.nvim", branch = "v1.x" },
             { "hrsh7th/nvim-cmp" },
