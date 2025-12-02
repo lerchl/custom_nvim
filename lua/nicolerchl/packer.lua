@@ -121,4 +121,6 @@ return require("packer").startup(function(use)
     use "kylechui/nvim-surround"
 
     use "tpope/vim-sleuth"
+
+    use "github/copilot.vim"
 end)
