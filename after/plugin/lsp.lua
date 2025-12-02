@@ -62,7 +62,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { "lua_ls", "clangd", "jdtls", "rust_analyzer", "ts_ls", "eslint", "xmlformatter", "checkstyle" },
+    ensure_installed = { "lua_ls", "clangd", "jdtls", "rust_analyzer", "ts_ls", "eslint" },
     handlers = {
         lsp_zero.default_setup,
         jdtls = lsp_zero.noop,
