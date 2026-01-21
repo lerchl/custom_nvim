@@ -226,6 +226,14 @@ local function jdtls_setup(event)
                     'java.util.Objects.requireNonNullElse',
                     'org.mockito.Mockito.*',
                 },
+                importOrder = {
+                    "#",
+                    "java",
+                    "javax",
+                    "jakarta",
+                    "org.springframework",
+                    "at.gv.bmi"
+                }
             },
             contentProvider = {
                 preferred = 'fernflower',
