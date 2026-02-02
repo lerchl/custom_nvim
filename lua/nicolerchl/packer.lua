@@ -70,7 +70,7 @@ return require("packer").startup(function(use)
     -- NAV
     use "declancm/cinnamon.nvim"
 
-    use { "ggandor/leap.nvim", requires = { "tpope/vim-repeat" } }
+    use { "https://codeberg.org/andyg/leap.nvim", requires = { "tpope/vim-repeat" } }
 
     use { "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } }
     use "nvim-telescope/telescope-ui-select.nvim"
@@ -122,5 +122,5 @@ return require("packer").startup(function(use)
 
     use "tpope/vim-sleuth"
 
-    use "github/copilot.vim"
+    -- use "github/copilot.vim"
 end)
