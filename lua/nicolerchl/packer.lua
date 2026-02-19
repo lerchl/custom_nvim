@@ -86,7 +86,7 @@ return require("packer").startup(function(use)
         "VonHeikemen/lsp-zero.nvim",
         branch = "v3.x",
         requires = {
-            { "neovim/nvim-lspconfig", tag = "v2.5.0" },
+            { "neovim/nvim-lspconfig",          tag = "v2.5.0" },
             { "mason-org/mason.nvim",           branch = "v1.x" },
             { "mason-org/mason-lspconfig.nvim", branch = "v1.x" },
             { "hrsh7th/nvim-cmp" },
@@ -109,6 +109,18 @@ return require("packer").startup(function(use)
     use "stevearc/conform.nvim"
 
     use "mfussenegger/nvim-lint"
+
+    use { "andythigpen/nvim-coverage", requires = { "nvim-lua/plenary.nvim", "nvim-neotest/neotest" } }
+
+    use {
+        "nvim-neotest/neotest",
+        requires = {
+            "nvim-neotest/nvim-nio",
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter"
+        }
+    }
 
     -- MISC
 
