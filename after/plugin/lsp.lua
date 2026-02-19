@@ -62,7 +62,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { "lua_ls", "clangd", "jdtls", "rust_analyzer", "ts_ls", "eslint" },
+    ensure_installed = { "lua_ls", "clangd", "jdtls", "rust_analyzer", "ts_ls", "eslint", "helm_ls", "yamlls" },
     handlers = {
         lsp_zero.default_setup,
         jdtls = lsp_zero.noop,
@@ -84,6 +84,17 @@ require('mason-lspconfig').setup({
                 preferences = {
                     typescript = {
                         includeInlayParameterNameHints = "literals"
+                    }
+                }
+            }
+        end,
+        helm_ls = function()
+            require("lspconfig").helm_ls.setup {
+                settings = {
+                    ["helm-ls"] = {
+                        yamlls = {
+                            path = vim.fn.exepath("yaml-language-server"),
+                        }
                     }
                 }
             }
