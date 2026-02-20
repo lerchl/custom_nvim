@@ -77,26 +77,35 @@ return require("packer").startup(function(use)
 
     use "folke/trouble.nvim"
 
-    use { "nvim-treesitter/nvim-treesitter", tag = "v0.9.3", run = ":TSUpdate" }
+    use { "nvim-treesitter/nvim-treesitter", tag = "*", run = ":TSUpdate" }
     use { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter", requires = "nvim-treesitter/nvim-treesitter" }
 
     -- LSP / DAP
 
     use {
-        "VonHeikemen/lsp-zero.nvim",
-        branch = "v3.x",
+        "neovim/nvim-lspconfig",
+        tag = "*",
+    }
+
+    use {
+        "mason-org/mason.nvim",
+        tag = "*",
+    }
+
+    use {
+        "mason-org/mason-lspconfig.nvim",
+        tag = "*",
         requires = {
-            { "neovim/nvim-lspconfig",          tag = "v2.5.0" },
-            { "mason-org/mason.nvim",           branch = "v1.x" },
-            { "mason-org/mason-lspconfig.nvim", branch = "v1.x" },
-            { "hrsh7th/nvim-cmp" },
-            { "hrsh7th/cmp-nvim-lsp" },
-            { "hrsh7th/cmp-buffer" },
-            { "hrsh7th/cmp-path" },
-            { "saadparwaiz1/cmp_luasnip" },
-            { "hrsh7th/cmp-nvim-lua" },
-            { "L3MON4D3/LuaSnip" },
-            { "rafamadriz/friendly-snippets" }
+            "mason-org/mason.nvim",
+            "neovim/nvim-lspconfig",
+        }
+    }
+
+    use {
+        "saghen/blink.cmp",
+        tag = "*",
+        requires = {
+            "rafamadriz/friendly-snippets"
         }
     }
 
@@ -132,6 +141,7 @@ return require("packer").startup(function(use)
 
     use "kylechui/nvim-surround"
 
+    -- Auto configure indenting based on indenting used in open buffer
     use "tpope/vim-sleuth"
 
     -- use "github/copilot.vim"

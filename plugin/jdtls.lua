@@ -27,9 +27,7 @@ local function get_jdtls_paths()
 
     path.data_dir = vim.fn.stdpath('cache') .. '/nvim-jdtls'
 
-    local jdtls_install = require('mason-registry')
-        .get_package('jdtls')
-        :get_install_path()
+    local jdtls_install = vim.fn.expand("$MASON/packages/jdtls")
 
     path.java_agent = jdtls_install .. '/lombok.jar'
     path.launcher_jar = vim.fn.glob(jdtls_install .. '/plugins/org.eclipse.equinox.launcher_*.jar')
@@ -47,7 +45,7 @@ local function get_jdtls_paths()
     ---
     -- Include java-test bundle if present
     ---
-    local java_test_path = require("mason-registry").get_package("java-test"):get_install_path()
+    local java_test_path = vim.fn.expand("$MASON/packages/java-test")
 
     local java_test_bundle = vim.split(
         vim.fn.glob(java_test_path .. '/extension/server/*.jar'),
@@ -61,7 +59,7 @@ local function get_jdtls_paths()
     ---
     -- Include java-debug-adapter bundle if present
     ---
-    local java_debug_path = require("mason-registry").get_package("java-debug-adapter"):get_install_path()
+    local java_debug_path = vim.fn.expand("$MASON/packages/java-debug-adapter")
     local java_debug_bundle = vim.split(
         vim.fn.glob(java_debug_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar"), "\n")
 
@@ -114,7 +112,7 @@ local function enable_debugger(bufnr)
     vim.keymap.set('n', '<leader>tm', "<cmd>lua require('jdtls').test_nearest_method()<cr>", opts)
 end
 
-local function jdtls_on_attach(client, bufnr)
+local function jdtls_on_attach(bufnr)
     if features.debugger then
         enable_debugger(bufnr)
     end
@@ -122,20 +120,9 @@ local function jdtls_on_attach(client, bufnr)
     if features.codelens then
         enable_codelens(bufnr)
     end
-
-    -- The following mappings are based on the suggested usage of nvim-jdtls
-    -- https://github.com/mfussenegger/nvim-jdtls#usage
-
-    local opts = { buffer = bufnr }
-    vim.keymap.set('n', '<A-o>', "<cmd>lua require('jdtls').organize_imports()<cr>", opts)
-    vim.keymap.set('n', 'crv', "<cmd>lua require('jdtls').extract_variable()<cr>", opts)
-    vim.keymap.set('x', 'crv', "<esc><cmd>lua require('jdtls').extract_variable(true)<cr>", opts)
-    vim.keymap.set('n', 'crc', "<cmd>lua require('jdtls').extract_constant()<cr>", opts)
-    vim.keymap.set('x', 'crc', "<esc><cmd>lua require('jdtls').extract_constant(true)<cr>", opts)
-    vim.keymap.set('x', 'crm', "<esc><Cmd>lua require('jdtls').extract_method(true)<cr>", opts)
 end
 
-local function jdtls_setup(event)
+local function jdtls_setup()
     local jdtls = require('jdtls')
 
     local path = get_jdtls_paths()
@@ -144,11 +131,8 @@ local function jdtls_setup(event)
     if cache_vars.capabilities == nil then
         jdtls.extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
-        local ok_cmp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
-        cache_vars.capabilities = vim.tbl_deep_extend(
-            'force',
-            vim.lsp.protocol.make_client_capabilities(),
-            ok_cmp and cmp_lsp.default_capabilities() or {}
+        cache_vars.capabilities = require("blink.cmp").get_lsp_capabilities(
+            vim.lsp.protocol.make_client_capabilities()
         )
     end
 
@@ -259,7 +243,10 @@ local function jdtls_setup(event)
     jdtls.start_or_attach({
         cmd = cmd,
         settings = lsp_settings,
-        on_attach = jdtls_on_attach,
+        on_attach = function(client, bufnr)
+            require("nicolerchl.lsp").on_attach(client, bufnr)
+            jdtls_on_attach(bufnr)
+        end,
         capabilities = cache_vars.capabilities,
         root_dir = jdtls.setup.find_root(root_files),
         flags = {

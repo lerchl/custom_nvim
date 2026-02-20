@@ -1,6 +1,4 @@
-local install_path = require("mason-registry")
-.get_package("sonarlint-language-server")
-:get_install_path()
+local install_path = vim.fn.expand("$MASON/packages/sonarlint-language-server")
 
 require("sonarlint").setup {
 	server = {

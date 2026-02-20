@@ -1,4 +1,5 @@
 local dap = require("dap")
+local ui = require("nicolerchl.ui")
 
 vim.keymap.set("n", "<F5>", dap.continue, { desc = "Start / Continue debugging" })
 vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Step over" })
@@ -25,7 +26,7 @@ dapui.setup {
 	element_mappings = {},
 	expand_lines = true,
 	floating = {
-		border = "single",
+		border = ui.border,
 		mappings = {
 			close = { "q", "<Esc>" }
 		}

@@ -4,10 +4,10 @@ require("cinnamon").setup {
         extra = true
     },
     options = {
-		delay = 2,
-		max_delta = {
-			time = 100
-		},
-		mode = "cursor"
-	}
+        delay = 2,
+        max_delta = {
+            time = 100
+        },
+        mode = "cursor"
+    }
 }
