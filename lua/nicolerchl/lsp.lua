@@ -1,3 +1,5 @@
+local ui = require("nicolerchl.ui")
+
 local M = {}
 
 M.on_attach = function(client, bufnr)
@@ -6,7 +8,7 @@ M.on_attach = function(client, bufnr)
     end
 
     -- Hover
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "Hover" })
+    vim.keymap.set("n", "K", function() vim.lsp.buf.hover { border = ui.border } end, { buffer = bufnr, desc = "Hover" })
 
     -- Code actions / formatting
     map("n", "<leader>ca", vim.lsp.buf.code_action, "Code Action")

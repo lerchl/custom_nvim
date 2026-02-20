@@ -21,27 +21,19 @@ vim.opt.fillchars:append("diff:╱")
 vim.opt.mouse = ""
 
 if vim.fn.has('mac') == 1 then
-	vim.opt.clipboard = "unnamed"
+    vim.opt.clipboard = "unnamed"
 elseif vim.fn.has('unix') == 1 then
-	vim.opt.clipboard = "unnamedplus"
+    vim.opt.clipboard = "unnamedplus"
 end
 
 local ui = require("nicolerchl.ui")
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-    vim.lsp.handlers.hover,
-    { border = ui.border }
-)
+vim.opt.winblend = ui.winblend
 
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-    vim.lsp.handlers.signature_help,
-    { border = ui.border }
-)
-
-vim.diagnostic.config({
+vim.diagnostic.config {
     float = {
         border = ui.border,
         source = "always",
         header = "",
     },
-})
+}

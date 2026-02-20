@@ -1,3 +1,4 @@
+local ui = require("nicolerchl.ui")
 local open_with_trouble = require("trouble.sources.telescope").open
 
 require("telescope").setup {
@@ -6,7 +7,10 @@ require("telescope").setup {
         layout_strategy = "horizontal",
         layout_config = { prompt_position = "top" },
         sorting_strategy = "ascending",
-        winblend = 0,
+        borderchars = {
+            "─", "│", "─", "│", "╭", "╮", "╯", "╰"
+        },
+        winblend = ui.winblend,
         path_display = { "smart" },
         mappings = {
             i = { ["<c-t>"] = open_with_trouble },
@@ -19,6 +23,7 @@ require("telescope").load_extension("ui-select")
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>F", builtin.find_files, { desc = "Find files" })
+vim.keymap.set("n", "<leader> ", builtin.find_files, { desc = "Find files" })
 vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "Find git files" })
 vim.keymap.set("n", "<leader>fo", function() builtin.treesitter{ ignore_symbols= { "import", "parameter", "var", "" } } end, { desc = "Find treesitter" })
 vim.keymap.set("n", "<leader>ft", builtin.live_grep, { desc = "Find text" })
@@ -30,7 +35,7 @@ vim.keymap.set("n", "<leader>:", builtin.commands, { desc = "Commands" })
 
 local action_state = require("telescope.actions.state")
 
-vim.keymap.set("n", "<leader> ", function()
+vim.keymap.set("n", "<leader>fb", function()
     builtin.buffers {
         ignore_current_buffer = true,
         attach_mappings = function(prompt_bufnr, map)

@@ -11,10 +11,14 @@ require("blink.cmp").setup {
     completion = {
         documentation = {
             auto_show = true,
-            window = { border = ui.border },
+            window = {
+                border = ui.border,
+                winblend = ui.winblend,
+            },
         },
         menu = {
             border = ui.border,
+            winblend = ui.winblend,
         },
     },
     sources = {
