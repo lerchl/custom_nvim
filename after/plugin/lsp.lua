@@ -58,3 +58,13 @@ vim.lsp.config("helm_ls", {
         },
     },
 })
+
+vim.lsp.config("angularls", {
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+
+vim.lsp.config("rust_analyzer", {
+    capabilities = capabilities,
+    on_attach = on_attach,
+})

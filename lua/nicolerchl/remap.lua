@@ -1,6 +1,10 @@
 -- leader
 vim.g.mapleader = " "
 
+-- keep selection when in-/outdenting
+vim.keymap.set("v", ">", ">gv", { remap = true })
+vim.keymap.set("v", "<", "<gv", { remap = true })
+
 -- saving, writing twice to fix eol
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>:w<CR>", { silent = true })
 vim.keymap.set("n", "<C-s>", ":w<CR>:w<CR>", { silent = true })
@@ -26,12 +30,12 @@ vim.keymap.set('n', '<S-Down>', ':resize -2<CR>', { noremap = true, silent = tru
 
 -- tabs
 for i = 1, 9 do
-	vim.keymap.set(
-		"n",
-		("<leader>t%s"):format(i),
-		("%sgt"):format(i),
-		{ desc = ("Tab %s"):format(i) }
-	)
+    vim.keymap.set(
+        "n",
+        ("<leader>t%s"):format(i),
+        ("%sgt"):format(i),
+        { desc = ("Tab %s"):format(i) }
+    )
 end
 vim.keymap.set("n", "<leader>tw", ":tabclose<CR>", { desc = "Close tab" })
 
@@ -41,17 +45,20 @@ vim.keymap.set("n", "<leader>fs", ":noh<CR>", { silent = true, desc = "Stop find
 
 -- tabs / spaces
 local function toggleSpacesTabs()
-	if vim.opt.expandtab:get() then
-		vim.opt.expandtab = false
-	else
-		vim.opt.expandtab = true
-	end
+    if vim.opt.expandtab:get() then
+        vim.opt.expandtab = false
+    else
+        vim.opt.expandtab = true
+    end
 end
 
 local function setSpaces(spaces)
     vim.opt.shiftwidth = spaces
 end
 
-vim.keymap.set("n", "<leader>ts", toggleSpacesTabs, { noremap = true, silent = true, desc = "Toggle between tabs and spaces for indentation" })
-vim.keymap.set("n", "<leader>s2", function () setSpaces(2) end, { noremap = true, silent = true, desc = "Use 2 spaces for indentation" })
-vim.keymap.set("n", "<leader>s4", function () setSpaces(4) end, { noremap = true, silent = true, desc = "Use 4 spaces for indentation" })
+vim.keymap.set("n", "<leader>ts", toggleSpacesTabs,
+    { noremap = true, silent = true, desc = "Toggle between tabs and spaces for indentation" })
+vim.keymap.set("n", "<leader>s2", function() setSpaces(2) end,
+    { noremap = true, silent = true, desc = "Use 2 spaces for indentation" })
+vim.keymap.set("n", "<leader>s4", function() setSpaces(4) end,
+    { noremap = true, silent = true, desc = "Use 4 spaces for indentation" })
