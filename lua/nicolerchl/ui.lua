@@ -1,6 +1,6 @@
 local M = {}
 
 M.border = "rounded"
-M.winblend = 10
+M.winblend = 8
 
 return M
