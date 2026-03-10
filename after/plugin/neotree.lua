@@ -1,12 +1,13 @@
 require("neo-tree").setup {
     enable_git_status = false,
+    popup_border_style = "rounded",
     filesystem = {
         scan_mode = "deep",
         group_empty_dirs = true,
         use_libuv_file_watcher = true,
     },
     window = {
-        position = "current"
+        position = "float"
     }
 }
 

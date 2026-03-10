@@ -7,17 +7,17 @@ return require("packer").startup(function(use)
     -- UI
     use "goolord/alpha-nvim"
 
-    use {
-        "utilyre/barbecue.nvim",
-        tag = "*",
-        requires = {
-            "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons"
-        },
-        config = function()
-            require("barbecue").setup()
-        end
-    }
+    -- use {
+    --     "utilyre/barbecue.nvim",
+    --     tag = "*",
+    --     requires = {
+    --         "SmiteshP/nvim-navic",
+    --         "nvim-tree/nvim-web-devicons"
+    --     },
+    --     config = function()
+    --         require("barbecue").setup()
+    --     end
+    -- }
 
     use { "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" }
 
