@@ -1,21 +1,14 @@
-local java_cmds = vim.api.nvim_create_augroup('java_cmds', { clear = true })
+local jdtls = require("jdtls")
+
+local java_cmds = vim.api.nvim_create_augroup("java_cmds", { clear = true })
 local cache_vars = {}
 
 local root_files = {
-    '.git',
-    'mvnw',
-    'gradlew',
-    'pom.xml',
-    'build.gradle',
-}
-
-local features = {
-    -- change this to `true` to enable codelens
-    codelens = false,
-
-    -- change this to `true` if you have `nvim-dap`,
-    -- `java-test` and `java-debug-adapter` installed
-    debugger = true,
+    ".git",
+    "mvnw",
+    "gradlew",
+    "pom.xml",
+    "build.gradle",
 }
 
 local function get_jdtls_paths()
@@ -25,19 +18,19 @@ local function get_jdtls_paths()
 
     local path = {}
 
-    path.data_dir = vim.fn.stdpath('cache') .. '/nvim-jdtls'
+    path.data_dir = vim.fn.stdpath("cache") .. "/nvim-jdtls"
 
     local jdtls_install = vim.fn.expand("$MASON/packages/jdtls")
 
-    path.java_agent = jdtls_install .. '/lombok.jar'
-    path.launcher_jar = vim.fn.glob(jdtls_install .. '/plugins/org.eclipse.equinox.launcher_*.jar')
+    path.java_agent = jdtls_install .. "/lombok.jar"
+    path.launcher_jar = vim.fn.glob(jdtls_install .. "/plugins/org.eclipse.equinox.launcher_*.jar")
 
-    if vim.fn.has('mac') == 1 then
-        path.platform_config = jdtls_install .. '/config_mac'
-    elseif vim.fn.has('unix') == 1 then
-        path.platform_config = jdtls_install .. '/config_linux'
-    elseif vim.fn.has('win32') == 1 then
-        path.platform_config = jdtls_install .. '/config_win'
+    if vim.fn.has("mac") == 1 then
+        path.platform_config = jdtls_install .. "/config_mac"
+    elseif vim.fn.has("unix") == 1 then
+        path.platform_config = jdtls_install .. "/config_linux"
+    elseif vim.fn.has("win32") == 1 then
+        path.platform_config = jdtls_install .. "/config_win"
     end
 
     path.bundles = {}
@@ -48,11 +41,11 @@ local function get_jdtls_paths()
     local java_test_path = vim.fn.expand("$MASON/packages/java-test")
 
     local java_test_bundle = vim.split(
-        vim.fn.glob(java_test_path .. '/extension/server/*.jar'),
-        '\n'
+        vim.fn.glob(java_test_path .. "/extension/server/*.jar"),
+        "\n"
     )
 
-    if java_test_bundle[1] ~= '' then
+    if java_test_bundle[1] ~= "" then
         vim.list_extend(path.bundles, java_test_bundle)
     end
 
@@ -63,7 +56,7 @@ local function get_jdtls_paths()
     local java_debug_bundle = vim.split(
         vim.fn.glob(java_debug_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar"), "\n")
 
-    if java_debug_bundle[1] ~= '' then
+    if java_debug_bundle[1] ~= "" then
         vim.list_extend(path.bundles, java_debug_bundle)
     end
 
@@ -90,43 +83,23 @@ local function get_jdtls_paths()
     return path
 end
 
-local function enable_codelens(bufnr)
-    pcall(vim.lsp.codelens.refresh)
-
-    vim.api.nvim_create_autocmd('BufWritePost', {
-        buffer = bufnr,
-        group = java_cmds,
-        desc = 'refresh codelens',
-        callback = function()
-            pcall(vim.lsp.codelens.refresh)
-        end,
-    })
-end
-
 local function enable_debugger(bufnr)
-    require('jdtls').setup_dap()
-    require('jdtls.dap').setup_dap_main_class_configs()
+    jdtls.setup_dap()
+    if not cache_vars.dap_main_configs_loaded then
+        require("jdtls.dap").setup_dap_main_class_configs()
+        cache_vars.dap_main_configs_loaded = true
+    end
 
     local opts = { buffer = bufnr }
-    vim.keymap.set('n', '<leader>tc', "<cmd>lua require('jdtls').test_class()<cr>", opts)
-    vim.keymap.set('n', '<leader>tm', "<cmd>lua require('jdtls').test_nearest_method()<cr>", opts)
-end
-
-local function jdtls_on_attach(bufnr)
-    if features.debugger then
-        enable_debugger(bufnr)
-    end
-
-    if features.codelens then
-        enable_codelens(bufnr)
-    end
+    vim.keymap.set("n", "<leader>tc", function() jdtls.test_class() end,
+        vim.tbl_extend("force", opts, { desc = "Test class" }))
+    vim.keymap.set("n", "<leader>tm", function() jdtls.test_nearest_method() end,
+        vim.tbl_extend("force", opts, { desc = "Test nearest method" }))
 end
 
 local function jdtls_setup()
-    local jdtls = require('jdtls')
-
     local path = get_jdtls_paths()
-    local data_dir = path.data_dir .. '/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+    local data_dir = path.data_dir .. "/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
     if cache_vars.capabilities == nil then
         jdtls.extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
@@ -139,32 +112,24 @@ local function jdtls_setup()
     -- The command that starts the language server
     -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
     local cmd = {
-        -- 💀
-        'java',
-
-        '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-        '-Dosgi.bundles.defaultStartLevel=4',
-        '-Declipse.product=org.eclipse.jdt.ls.core.product',
-        '-Dlog.protocol=true',
-        '-Dlog.level=ALL',
-        '-javaagent:' .. path.java_agent,
-        '-Xms1g',
-        '--add-modules=ALL-SYSTEM',
-        '--add-opens',
-        'java.base/java.util=ALL-UNNAMED',
-        '--add-opens',
-        'java.base/java.lang=ALL-UNNAMED',
-
-        -- 💀
-        '-jar',
+        "java",
+        "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+        "-Dosgi.bundles.defaultStartLevel=4",
+        "-Declipse.product=org.eclipse.jdt.ls.core.product",
+        "-Dlog.protocol=true",
+        "-Dlog.level=ALL",
+        "-javaagent:" .. path.java_agent,
+        "-Xms1g",
+        "--add-modules=ALL-SYSTEM",
+        "--add-opens",
+        "java.base/java.util=ALL-UNNAMED",
+        "--add-opens",
+        "java.base/java.lang=ALL-UNNAMED",
+        "-jar",
         path.launcher_jar,
-
-        -- 💀
-        '-configuration',
+        "-configuration",
         path.platform_config,
-
-        -- 💀
-        '-data',
+        "-data",
         data_dir,
     }
 
@@ -174,23 +139,17 @@ local function jdtls_setup()
                 downloadSources = true,
             },
             configuration = {
-                updateBuildConfiguration = 'interactive',
+                updateBuildConfiguration = "interactive",
                 runtimes = path.runtimes,
             },
             maven = {
                 downloadSources = true,
             },
-            implementationsCodeLens = {
-                enabled = true,
+            inlayHints = {
+                parameterNames = {
+                    enabled = "none" -- literals, all, none
+                }
             },
-            referencesCodeLens = {
-                enabled = true,
-            },
-            -- inlayHints = {
-            --   parameterNames = {
-            --     enabled = 'all' -- literals, all, none
-            --   }
-            -- },
             format = {
                 enabled = true,
                 settings = {
@@ -202,13 +161,13 @@ local function jdtls_setup()
             },
             completion = {
                 favoriteStaticMembers = {
-                    'org.hamcrest.MatcherAssert.assertThat',
-                    'org.hamcrest.Matchers.*',
-                    'org.hamcrest.CoreMatchers.*',
-                    'org.junit.jupiter.api.Assertions.*',
-                    'java.util.Objects.requireNonNull',
-                    'java.util.Objects.requireNonNullElse',
-                    'org.mockito.Mockito.*',
+                    "org.hamcrest.MatcherAssert.assertThat",
+                    "org.hamcrest.Matchers.*",
+                    "org.hamcrest.CoreMatchers.*",
+                    "org.junit.jupiter.api.Assertions.*",
+                    "java.util.Objects.requireNonNull",
+                    "java.util.Objects.requireNonNullElse",
+                    "org.mockito.Mockito.*",
                 },
                 importOrder = {
                     "#",
@@ -220,7 +179,7 @@ local function jdtls_setup()
                 }
             },
             contentProvider = {
-                preferred = 'fernflower',
+                preferred = "fernflower",
             },
             extendedClientCapabilities = jdtls.extendedClientCapabilities,
             sources = {
@@ -231,7 +190,7 @@ local function jdtls_setup()
             },
             codeGeneration = {
                 toString = {
-                    template = '${object.className}{${member.name()}=${member.value}, ${otherMembers}}',
+                    template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
                 },
                 useBlocks = true,
             }
@@ -245,7 +204,7 @@ local function jdtls_setup()
         settings = lsp_settings,
         on_attach = function(client, bufnr)
             require("nicolerchl.lsp").on_attach(client, bufnr)
-            jdtls_on_attach(bufnr)
+            enable_debugger(bufnr)
         end,
         capabilities = cache_vars.capabilities,
         root_dir = jdtls.setup.find_root(root_files),
@@ -258,9 +217,24 @@ local function jdtls_setup()
     })
 end
 
-vim.api.nvim_create_autocmd('FileType', {
+vim.api.nvim_create_autocmd("FileType", {
     group = java_cmds,
-    pattern = { 'java' },
-    desc = 'Setup jdtls',
+    pattern = { "java" },
+    desc = "Setup jdtls",
     callback = jdtls_setup,
+})
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    group = java_cmds,
+    callback = function()
+        if vim.fn.filereadable(vim.fn.getcwd() .. "/pom.xml") == 1 then
+            local java_file = vim.fn.glob(vim.fn.getcwd() .. "/**/*Application.java", false, true)[1]
+                or vim.fn.glob(vim.fn.getcwd() .. "/**/*.java", false, true)[1]
+            if java_file then
+                vim.cmd("badd " .. java_file)
+                local buf = vim.fn.bufnr(java_file)
+                vim.bo[buf].filetype = "java"
+            end
+        end
+    end,
 })

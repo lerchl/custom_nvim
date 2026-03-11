@@ -1,7 +1,28 @@
 local dap = require("dap")
 local ui = require("nicolerchl.ui")
 
-vim.keymap.set("n", "<F5>", dap.continue, { desc = "Start / Continue debugging" })
+local continue = function()
+	-- just run continue if currently already debugging
+	if dap.session() then
+		dap.continue()
+		return
+	end
+
+	-- only force switch the current buffer to a java buffer if no debug adapter
+	-- is present for the currently open buffer's file type
+	local ft = vim.bo.filetype
+	if not dap.adapters[ft] then
+		local java_file = vim.fn.glob(vim.fn.getcwd() .. "/**/*Application.java", false, true)[1]
+			or vim.fn.glob(vim.fn.getcwd() .. "/**/*.java", false, true)[1]
+		if java_file then
+			vim.api.nvim_set_current_buf(vim.fn.bufnr(java_file))
+		end
+	end
+
+	dap.continue()
+end
+
+vim.keymap.set("n", "<F5>", continue, { desc = "Start / Continue debugging" })
 vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Step over" })
 vim.keymap.set("n", "<F11>", dap.step_into, { desc = "Step into" })
 vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
