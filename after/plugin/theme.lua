@@ -1,10 +1,14 @@
-require("catppuccin").setup {
-    flavour = "mocha",
-    no_italic = true,
-    integrations = {
-        diffview = true
-    }
-}
+require("catppuccin").setup({
+	flavour = "mocha",
+	no_italic = true,
+	integrations = {
+		markdown = true,
+		native_lsp = true,
+		semantic_tokens = true,
+		treesitter = true,
+		diffview = true,
+	},
+})
 
 vim.cmd("colorscheme catppuccin")
 

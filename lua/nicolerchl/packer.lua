@@ -21,7 +21,7 @@ return require("packer").startup(function(use)
 
     use { "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" }
 
-    use { "catppuccin/nvim", as = "catppuccin" }
+    use { "catppuccin/nvim", tag = "v1.11.0", as = "catppuccin" }
 
     use "sindrets/diffview.nvim"
 

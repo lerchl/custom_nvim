@@ -1,5 +1,4 @@
 local ui = require("nicolerchl.ui")
-local open_with_trouble = require("trouble.sources.telescope").open
 
 require("telescope").setup {
     defaults = {
@@ -11,11 +10,7 @@ require("telescope").setup {
             "─", "│", "─", "│", "╭", "╮", "╯", "╰"
         },
         winblend = ui.winblend,
-        path_display = { "smart" },
-        mappings = {
-            i = { ["<c-t>"] = open_with_trouble },
-            n = { ["<c-t>"] = open_with_trouble },
-        }
+        path_display = { "smart" }
     }
 }
 
