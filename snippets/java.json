@@ -1,0 +1,9 @@
+{
+    "SLF4J Logger": {
+        "prefix": "logger",
+        "body": [
+            "private static final Logger LOGGER = LoggerFactory.getLogger(${1:ClassName}.class);"
+        ],
+        "description": "SLF4J Logger field"
+    }
+}
