@@ -7,17 +7,17 @@ return require("packer").startup(function(use)
     -- UI
     use "goolord/alpha-nvim"
 
-    -- use {
-    --     "utilyre/barbecue.nvim",
-    --     tag = "*",
-    --     requires = {
-    --         "SmiteshP/nvim-navic",
-    --         "nvim-tree/nvim-web-devicons"
-    --     },
-    --     config = function()
-    --         require("barbecue").setup()
-    --     end
-    -- }
+    use {
+        "utilyre/barbecue.nvim",
+        tag = "*",
+        requires = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons"
+        },
+        config = function()
+            require("barbecue").setup()
+        end
+    }
 
     use { "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" }
 
@@ -107,7 +107,7 @@ return require("packer").startup(function(use)
         }
     }
 
-    use "mfussenegger/nvim-dap"
+    use { "mfussenegger/nvim-dap" }
     use { "mfussenegger/nvim-jdtls", requires = "mfussenegger/nvim-dap" }
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } }
 
@@ -141,6 +141,4 @@ return require("packer").startup(function(use)
 
     -- Auto configure indenting based on indenting used in open buffer
     use "tpope/vim-sleuth"
-
-    -- use "github/copilot.vim"
 end)
