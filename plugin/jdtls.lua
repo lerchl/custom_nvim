@@ -104,9 +104,7 @@ local function jdtls_setup()
     if cache_vars.capabilities == nil then
         jdtls.extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
-        cache_vars.capabilities = require("blink.cmp").get_lsp_capabilities(
-            vim.lsp.protocol.make_client_capabilities()
-        )
+        cache_vars.capabilities = require("blink.cmp").get_lsp_capabilities()
     end
 
     -- The command that starts the language server
@@ -147,7 +145,7 @@ local function jdtls_setup()
             },
             inlayHints = {
                 parameterNames = {
-                    enabled = "none" -- literals, all, none
+                    enabled = "literals" -- literals, all, none
                 }
             },
             format = {
@@ -155,9 +153,6 @@ local function jdtls_setup()
                 settings = {
                     url = vim.fn.stdpath("config") .. "/plugin/eclipse-formatter.xml"
                 },
-            },
-            signatureHelp = {
-                enabled = true,
             },
             completion = {
                 favoriteStaticMembers = {
@@ -193,6 +188,11 @@ local function jdtls_setup()
                     template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
                 },
                 useBlocks = true,
+            },
+            compile = {
+                nullAnalysis = {
+                    mode = "automatic"
+                }
             }
         },
     }
