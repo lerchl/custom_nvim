@@ -77,10 +77,6 @@ dapui.setup {
 		size = 40
 	}, {
 		elements = {
-			-- {
-			-- 	id = "repl",
-			-- 	size = 0.5
-			-- },
 			{
 				id = "console",
 				size = 1
@@ -105,8 +101,9 @@ dapui.setup {
 
 local eval = function() dapui.eval(nil, { enter = true }) end
 
-vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "Toggle DAP UI" })
+vim.keymap.set("n", "<leader>du", function() dapui.toggle(1) end, { desc = "Toggle DAP sidebar" })
 vim.keymap.set("n", "<leader>dj", function() dapui.toggle(2) end, { desc = "Toggle DAP console" })
+vim.keymap.set("n", "<leader>dr", function() require("dap.repl").toggle() end, { desc = "Toggle DAP repl" })
 vim.keymap.set("n", "<leader>de", eval, { desc = "Evaluate expression" })
 vim.keymap.set("v", "<leader>de", eval, { desc = "Evaluate expression" })
 
